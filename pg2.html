@@ -21,110 +21,113 @@
             <li id="navItem"><a id="navLink" href="pg5.html">Language Comparison</a></li>
         </ul>
     </nav>
-    <p>  
+    <p> 
+<br>	
     To follow a simple step-by-step instruction manual for installation follow this link:
-    <a href="https://golang.org/doc/install">Official Go Website</a>
+    <a href="https://golang.org/doc/install">Official Go Website</a><br>
 
-This public GitHub repo contains a free translator for Go, and it just so happens to be a Universal language translator. 
-     <a href="https://github.com/go-playground/universal-translator">Official Go Website</a>
-all of the step by step instructions from that link can also be read through below:
+This public GitHub repo contains a free translator for Go, and it just so happens to be a Universal language translator. <br>
+     <a href="https://github.com/go-playground/universal-translator">Official Go Website</a><br>
+	 <br>
+All of the step by step instructions from that link can also be read through below:<br>
 
-    System requirements 
+<h4>System requirements:</h4> 
 
-Go binary distributions are available for these supported operating systems and architectures. Please ensure your system meets these requirements before proceeding. If your OS or architecture is not on the list, you may be able to install from source or use gccgo instead.
+Go binary distributions are available for these supported operating systems and architectures. Please ensure your system meets these requirements before proceeding. If your OS or architecture is not on the list, you may be able to install from source or use gccgo instead.<br>
+<br>
 
-Operating system    Architectures   Notes
-FreeBSD 9.3 or later    amd64, 386  Debian GNU/kFreeBSD not supported
+<b>Operating System    Architectures   Notes</b><br>
+FreeBSD 9.3 or later    amd64, 386  Debian GNU/kFreeBSD not supported<br>
 Linux 2.6.23 or later with glibc    amd64, 386, arm, arm64,
 s390x, ppc64le  CentOS/RHEL 5.x not supported.
-Install from source for other libc.
-macOS 10.8 or later amd64   use the clang or gcc† that comes with Xcode‡ for cgo support
-Windows XP SP2 or later amd64, 386  use MinGW gcc†. No need for cygwin or msys.
-†A C compiler is required only if you plan to use cgo.
-‡You only need to install the command line tools for Xcode. If you have already installed Xcode 4.3+, you can install it from the Components tab of the Downloads preferences panel.
+Install from source for other libc.<br>
+macOS 10.8 or later amd64   use the clang or gcc† that comes with Xcode‡ for cgo support<br>
+Windows XP SP2 or later amd64, 386  use MinGW gcc†. No need for cygwin or msys.<br>
+A C compiler is required only if you plan to use cgo.<br>
+You only need to install the command line tools for Xcode. If you have already installed Xcode 4.3+, you can install it from the Components tab of the Downloads preferences panel.<br>
 
-Install the Go tools
+<h4>Install the Go tools</h4>
 If you are upgrading from an older version of Go you must first remove the existing version.
 
-Linux, Mac OS X, and FreeBSD tarballs
-Download the archive and extract it into /usr/local, creating a Go tree in /usr/local/go. For example:
+Linux, Mac OS X, and FreeBSD tarballs<br>
+Download the archive and extract it into /usr/local, creating a Go tree in /usr/local/go. For example:<br>
 
-tar -C /usr/local -xzf go$VERSION.$OS-$ARCH.tar.gz
-Choose the archive file appropriate for your installation. For instance, if you are installing Go version 1.2.1 for 64-bit x86 on Linux, the archive you want is called go1.2.1.linux-amd64.tar.gz.
+tar -C /usr/local -xzf go$VERSION.$OS-$ARCH.tar.gz<br>
+Choose the archive file appropriate for your installation. For instance, if you are installing Go version 1.2.1 for 64-bit x86 on Linux, the archive you want is called go1.2.1.linux-amd64.tar.gz.<br>
 
-(Typically these commands must be run as root or through sudo.)
+(Typically these commands must be run as root or through sudo.)<br>
 
-Add /usr/local/go/bin to the PATH environment variable. You can do this by adding this line to your /etc/profile (for a system-wide installation) or $HOME/.profile:
+Add /usr/local/go/bin to the PATH environment variable. You can do this by adding this line to your /etc/profile (for a system-wide installation) or $HOME/.profile:<br>
 
-export PATH=$PATH:/usr/local/go/bin
-Installing to a custom location
+export PATH=$PATH:/usr/local/go/bin<br>
+Installing to a custom location<br>
 
-The Go binary distributions assume they will be installed in /usr/local/go (or c:\Go under Windows), but it is possible to install the Go tools to a different location. In this case you must set the GOROOT environment variable to point to the directory in which it was installed.
+The Go binary distributions assume they will be installed in /usr/local/go (or c:\Go under Windows), but it is possible to install the Go tools to a different location. In this case you must set the GOROOT environment variable to point to the directory in which it was installed.<br>
 
-For example, if you installed Go to your home directory you should add commands like the following to $HOME/.profile:
+For example, if you installed Go to your home directory you should add commands like the following to $HOME/.profile:<br>
 
-export GOROOT=$HOME/go1.X
-export PATH=$PATH:$GOROOT/bin
-Note: GOROOT must be set only when installing to a custom location.
+export GOROOT=$HOME/go1.X<br>
+export PATH=$PATH:$GOROOT/bin<br>
+Note: GOROOT must be set only when installing to a custom location.<br>
 
-Mac OS X package installer
-Download the package file, open it, and follow the prompts to install the Go tools. The package installs the Go distribution to /usr/local/go.
+Mac OS X package installer<br>
+Download the package file, open it, and follow the prompts to install the Go tools. The package installs the Go distribution to /usr/local/go.<br>
 
-The package should put the /usr/local/go/bin directory in your PATH environment variable. You may need to restart any open Terminal sessions for the change to take effect.
+The package should put the /usr/local/go/bin directory in your PATH environment variable. You may need to restart any open Terminal sessions for the change to take effect.<br>
 
-Windows
-The Go project provides two installation options for Windows users (besides installing from source): a zip archive that requires you to set some environment variables and an MSI installer that configures your installation automatically.
+Windows<br>
+The Go project provides two installation options for Windows users (besides installing from source): a zip archive that requires you to set some environment variables and an MSI installer that configures your installation automatically.<br>
 
-MSI installer
+MSI installer<br>
 
-Open the MSI file and follow the prompts to install the Go tools. By default, the installer puts the Go distribution in c:\Go.
+Open the MSI file and follow the prompts to install the Go tools. By default, the installer puts the Go distribution in c:\Go.<br>
 
-The installer should put the c:\Go\bin directory in your PATH environment variable. You may need to restart any open command prompts for the change to take effect.
+The installer should put the c:\Go\bin directory in your PATH environment variable. You may need to restart any open command prompts for the change to take effect.<br>
 
-Zip archive
+Zip archive<br>
 
-Download the zip file and extract it into the directory of your choice (we suggest c:\Go).
+Download the zip file and extract it into the directory of your choice (we suggest c:\Go).<br>
 
-If you chose a directory other than c:\Go, you must set the GOROOT environment variable to your chosen path.
+If you chose a directory other than c:\Go, you must set the GOROOT environment variable to your chosen path.<br>
 
-Add the bin subdirectory of your Go root (for example, c:\Go\bin) to your PATH environment variable.
+Add the bin subdirectory of your Go root (for example, c:\Go\bin) to your PATH environment variable.<br>
 
-Setting environment variables under Windows
+Setting environment variables under Windows<br>
 
-Under Windows, you may set environment variables through the "Environment Variables" button on the "Advanced" tab of the "System" control panel. Some versions of Windows provide this control panel through the "Advanced System Settings" option inside the "System" control panel.
+Under Windows, you may set environment variables through the "Environment Variables" button on the "Advanced" tab of the "System" control panel.<br> Some versions of Windows provide this control panel through the "Advanced System Settings" option inside the "System" control panel.<br>
 
-Test your installation
-Check that Go is installed correctly by setting up a workspace and building a simple program, as follows.
+Test your installation<br>
+Check that Go is installed correctly by setting up a workspace and building a simple program, as follows.<br>
 
-Create your workspace directory, %USERPROFILE%\go. (If you'd like to use a different directory, you will need to set the GOPATH environment variable.)
+Create your workspace directory, %USERPROFILE%\go. (If you'd like to use a different directory, you will need to set the GOPATH environment variable.)<br>
 
-Next, make the directory src/hello inside your workspace, and in that directory create a file named hello.go that looks like:
+Next, make the directory src/hello inside your workspace, and in that directory create a file named hello.go that looks like:<br>
 
-package main
+package main<br>
 
-import "fmt"
+import "fmt"<br>
 
-func main() {
-    fmt.Printf("hello, world\n")
-}
-Then build it with the go tool:
+func main() {<br>
+    fmt.Printf("hello, world\n")<br>
+}<br>
+Then build it with the go tool:<br>
 
-C:\> cd %USERPROFILE%\go\src\hello
-C:\Users\Gopher\go\src\hello> go build
-The command above will build an executable named hello.exe in the directory alongside your source code. Execute it to see the greeting:
+C:\> cd %USERPROFILE%\go\src\hello<br>
+C:\Users\Gopher\go\src\hello> go build<br>
+The command above will build an executable named hello.exe in the directory alongside your source code. Execute it to see the greeting:<br>
 
-C:\Users\Gopher\go\src\hello> hello
-hello, world
-If you see the "hello, world" message then your Go installation is working.
+C:\Users\Gopher\go\src\hello> hello<br>
+hello, world<br>
+If you see the "hello, world" message then your Go installation is working.<br>
 
-You can run go install to install the binary into your workspace's bin directory or go clean to remove it.
+You can run go install to install the binary into your workspace's bin directory or go clean to remove it.<br>
 
-Before rushing off to write Go code please read the How to Write Go Code document, which describes some essential concepts about using the Go tools.
+Before rushing off to write Go code please read the How to Write Go Code document, which describes some essential concepts about using the Go tools.<br>
 
-Uninstalling Go
-To remove an existing Go installation from your system delete the go directory. This is usually /usr/local/go under Linux, Mac OS X, and FreeBSD or c:\Go under Windows.
+Uninstalling Go<br>
+To remove an existing Go installation from your system delete the go directory. This is usually /usr/local/go under Linux, Mac OS X, and FreeBSD or c:\Go under Windows.<br>
 
-You should also remove the Go bin directory from your PATH environment variable. Under Linux and FreeBSD you should edit /etc/profile or $HOME/.profile. If you installed Go with the Mac OS X package then you should remove the /etc/paths.d/go file. Windows users should read the section about setting environment variables under Windows.
+You should also remove the Go bin directory from your PATH environment variable.<br> Under Linux and FreeBSD you should edit /etc/profile or $HOME/.profile. If you installed Go with the Mac OS X package then you should remove the /etc/paths.d/go file. Windows users should read the section about setting environment variables under Windows.<br>
 
     </p>    
 </body>
