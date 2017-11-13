@@ -1,0 +1,61 @@
+package main
+
+import "fmt"
+import "math/rand"
+
+func main() {
+    fmt.Print("How many dice? (1-5):")
+    var numDice int
+    fmt.Scanln(&numDice)
+    
+    fmt.Print("How many rolls? (1-100):")
+    var numRolls int
+    fmt.Scanln(&numRolls)
+    
+    
+    rollThoseDice(numDice, numRolls)
+}
+
+func rollThoseDice(dice int, rolls int){
+  
+  var count int
+  count = 1
+  
+  var origDice int
+  origDice = dice
+  
+  var score int
+  score = 0
+  
+  for count <= rolls {
+       
+        fmt.Print("Roll #")
+        fmt.Print(count)
+        fmt.Print(": ")
+        
+        for dice > 0 {
+              
+              var tempRoll int
+              tempRoll = rand.Intn(6)
+              score += tempRoll
+              fmt.Print(tempRoll)
+              if dice > 1 {
+                fmt.Print(" + ")
+              }
+              dice--
+        }
+        
+      dice = origDice
+      fmt.Print("\n")
+      count++
+  }
+  
+  fmt.Print("Score: ")
+  fmt.Print(score)
+  fmt.Print("\n")
+  
+  fmt.Print("Average Roll: ")
+  fmt.Print(float64(score)/float64(rolls))
+  fmt.Print("\n")
+  
+}
