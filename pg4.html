@@ -21,12 +21,56 @@
             <li id="navItem"><a id="navLink" href="pg5.html">Language Comparison</a></li>
         </ul>
     </nav>
-    <p>  description and history
-    links to specification documentation manuals tutorial
-    available translators and installation instructions
-    introductory programs with build/run instructions
-    more complex example programs with build/run instructions
-    tabular comparison of characteristics and features with respect to other (representative languages).  
+    <p>  package main
+
+//import multiple libraries/packages
+import (
+    "fmt"
+)
+
+//takes an array(slice) of integers and prints all values
+func printSlice(s []int) {
+    fmt.Printf("len=%d cap=%d %v\n", len(s), cap(s), s)
+}
+
+//finds all multiples of 3 and 5 for a given number
+func findMult(value int) []int {
+    //example of a "dynamic" array hack, just don't initialize with size
+    //we'll use append to make the slice behave dynamic
+    var m []int
+    //iterator value (like C)
+    i := 0
+
+    for i <= value {
+        // can also use if math.Mod(i, 3) || math.Mod(i,5)
+        if i%3 == 0 || i%5 == 0 {
+            //append the mult array with the
+            m = append(m, i)
+            //debug function that prints the array/slice given
+            printSlice(m)
+        }
+    }
+    //returns array of multiples
+    return m
+}
+
+func sum(x[] int) int {    
+
+    total := 0
+    for _, valuex := range x {
+        total += valuex
+    }
+    return total
+}
+
+func main() {
+    //array of integers to find multiples on
+    num := 30
+    //somewhat functional. set the value of a new array of ints to that of the return from findMult()
+    var mult []int := findMult(num)
+    //fmt print the integer returned by feeding the array/slice we just made to a sum function
+    fmt.Println(sum(mult))
+}
     </p>    
 </body>
 
