@@ -36,11 +36,11 @@ func rollThoseDice(dice int, rolls int){
         for dice > 0 {
               
               var tempRoll int
-              tempRoll = rand.Intn(6)
+              tempRoll = rand.Intn(6)+1
               score += tempRoll
               fmt.Print(tempRoll)
               if dice > 1 {
-                fmt.Print(" + ")
+                fmt.Print(",")
               }
               dice--
         }
@@ -59,3 +59,4 @@ func rollThoseDice(dice int, rolls int){
   fmt.Print("\n")
   
 }
+
