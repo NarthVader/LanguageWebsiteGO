@@ -30,6 +30,7 @@ import (
 
 //takes an array(slice) of integers and prints all values
 func printSlice(s []int) {
+//len and cap are built in functions in GO. very C style print function
     fmt.Printf("len=%d cap=%d %v\n", len(s), cap(s), s)
 }
 
@@ -41,10 +42,12 @@ func findMult(value int) []int {
     //iterator value (like C)
     i := 0
 
+    //simpler for loop format
     for i <= value {
         // can also use if math.Mod(i, 3) || math.Mod(i,5)
         if i%3 == 0 || i%5 == 0 {
-            //append the mult array with the
+            //append the mult array with the multiple, append is also a built in
+            //just a note, this is very inefficient, but i thought it was a good demonstration of using arrays and built in functions
             m = append(m, i)
             //debug function that prints the array/slice given
             printSlice(m)
@@ -55,7 +58,7 @@ func findMult(value int) []int {
 }
 
 func sum(x[] int) int {    
-
+    //static variable, static scope
     total := 0
     for _, valuex := range x {
         total += valuex
