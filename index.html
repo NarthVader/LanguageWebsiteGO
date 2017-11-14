@@ -71,24 +71,26 @@
 
     </p>  
     <p>
-    Go has several built-in types: numeric (byte, int64, float32, etc.), boolean, and string. Character strings are immutable, operators and keywords concatenate, and compare. 
-    Define custom "objects" or things of differing Type with struct.
+    Go has several built-in types: numeric (byte, int64, float32, etc.), boolean, and string. <br>Character strings are immutable, operators and keywords concatenate, and compare. 
+    <br>Define custom "objects" or things of differing Type with struct.
     <br>Can have an array of custom Type by specifying explicit length. Each array of differing length is technically a different type.
     <br>[n]T
     <br>Arrays can also be dynamic, in Go this is referred to as a slice, []T
     <br>Pointers for type denoted: *T. NO POINTER ARITHMETIC!!! Memory Safety!!!
-    <br>Maps are a little weird, and the type map[K]V is the type of hash tables mapping type-K keys to type-V values. Hash tables are built into the language. Basically there is a channel T that allows sending values of type T between concurrent Go processes.
-    <br>The type keyword can be used to define a new named type, this obviously needs to be a distinct name. Conversion between types is allowed. For example assigning a named type to an integer value. <br>Why would we ever do this? You ask. Well think of iPv4 addressing. You would need to make a named type iPv4
-    <br>type iPv4
+    <br>Maps are a little weird, and the type map[K]V is the type of hash tables mapping type-K keys to type-V values. 
+    <br>Hash tables are built into the language. Basically there is a channel T that allows sending values of type T between concurrent Go processes.
+    <br>The type keyword can be used to define a new named type, this obviously needs to be a distinct name. 
+    <br>Conversion between types is allowed. For example assigning a named type to an integer value. <br>Why would we ever do this? You ask. Well think of iPv4 addressing. You would need to make a named type iPv4
+    <br><br>type iPv4
     <br>Since we know that these addresses are 32 unsigned integers we can do
     <br>type iPv4 uint32
     <br>Now we have a named type iPv4 which are all defined to be unsigned 32 bit integers. Pretty sweet, huh?
     </p>
     <p> 
     Function types are indicated by the func keyword; they take zero or more parameters and return zero or more values, all of which are typed
-    func (numberA int64) isNumber1?/() bool {
-    return numberA == 1
-    }
+    <br><br>func (numberA int64) isNumber1?/() bool {
+   <br>     return numberA == 1
+   <br> }
     </p>
     <p>
     Go is very similar to Java with its inheritance. You design interfaces for your objects and explicitly typed values that are of the interface type inherit its characteristics.
