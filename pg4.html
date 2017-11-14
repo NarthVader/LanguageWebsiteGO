@@ -24,7 +24,7 @@
     <p>  package main<br><br>
 
 <br>//import multiple libraries/packages
-<br>import (
+<br><br>import (
 <br>    "fmt"
 <br>)<br>
 <br>
@@ -138,7 +138,137 @@ package main
   <br>fmt.Print("\n")
   <br>
 <br>}
-</p>   
+</p>
+
+<p>
+<br>package main
+<br>import "fmt"
+<br>import "math/rand"
+<br>import "time"
+<br><br><br>
+
+<br>/*
+<br><br>
+<br>import "bufio"
+<br>import "os"
+<br>import "strconv"
+<br><br>
+<br>Card Dealer (Soon to be black jack, I hope...)
+<br><br>
+<br>Author: Garett Skaar
+<br><br>
+<br>Go LW1 program CS-354
+<br><br>
+<br>*/
+<br><br>
+<br>//Main will build a deck of cards, shuffle the cards and ask for a number
+<br>//of cards to be dealt.
+<br><br>func main() {
+<br>
+    <br>//Build a new deck, unshuffled...
+    <br>deck := buildDeck()
+    <br>//Shuffle deck...
+    <br>shuffleDeck(deck)
+    <br>//prompt user
+    <br>fmt.Println("Deal how many cards?")
+    <br>var userInput int
+    <br>//scan standard input and check for errors
+    <br>_, err := fmt.Scanf("%d", &userInput)
+    <br>if err != nil {
+    <br>        fmt.Println(err)
+   <br> }
+    <br>//display the desired amount of cards
+    <br>Deal(deck, userInput)
+   <br><br> 
+    <br>/*
+    <br>needs implemented for black jack
+    <br>
+    <br>if strings.Contains(userInput, "y"){
+     <br>   fmt.Println()
+     <br>   startGame(deck)
+    <br>} else if strings.Contains(userInput, "n"){
+      <br>  fmt.Println("Maybe next time!")
+    <br>} else{
+        <br>fmt.Println("Maybe next time!")
+    <br>}
+    <br>*/
+ <br>   
+<br>}
+<br>//Deals the specified number of cards by user
+<br>func Deal(d Deck, n int) {
+   <br> for i := 0; i < n; i++ {
+       <br> fmt.Println(d[i].value,"of",d[i].suit)
+    <br>}
+<br>}
+<br>//needs work
+<br>func startGame(deck Deck) {
+<br>
+<br>    dealer := []Card{}
+<br>    player := []Card{}
+<br>    //var dealerVal int = 0
+<br>    //var playerVal int = 0
+<br>    
+<br>    //bust bool := false
+<br>    fmt.Println("Dealing cards...")
+<br>    for i :=0; i < len(deck) - 1;i++ {
+<br>        dealer = append(dealer, deck[i])
+<br>        player = append(player, deck[i+1])
+<br>    }
+<br>}
+<br>
+<br>//struct type holds suit type and value (Face, Ace, or Number)
+<br>type Card struct {
+<br>    value string
+<br>    suit string
+<br>}
+<br>
+<br>//Array of Card structs
+<br>type Deck []Card
+<br>
+<br>
+<br>
+<br>//Builds and returns a new Card array
+<br>func buildDeck() (deck Deck) {
+<br>
+<br>    //all valid values of a card
+<br>    values := []string{"Two", "Three", "Four", "Five", "Six", "Seven",
+<br>            "Eight", "Nine", "Ten", "Jack", "Queen", "King", "Ace"}
+<br>            
+<br>    //all valid suits   
+<br>    suits := []string{"Hearts", "Diamonds", "Clubs", "Spades"}
+<br>    <br>
+    // Loop over each value and suit appending to the deck
+<br>    for i := 0; i < len(values); i++ {
+    <br>    for n := 0; n < len(suits); n++ {
+        <br>    card := Card{
+            <br>    value: values[i],
+                <br>suit: suits[n],
+            <br>}
+            <br>deck = append(deck, card)
+        <br>}
+    <br>}
+    <br>return deck     
+     <br>   
+<br>}
+<br>//Returns a shuffled Deck of cards
+<br>func shuffleDeck(deck Deck) Deck {
+<br>
+    <br>//new seed based on current time
+    <br>rand.Seed(time.Now().UnixNano())
+   <br> 
+    <br>//Loops through deck, creates random int within deck size and current index, and
+    <br>//swaps card postions if the index and random int are different.
+   <br> 
+    <br>for i := 1; i < len(deck); i++ {
+    <br>    
+    <br>    random := rand.Intn(i + 1)
+     <br>   //swap the cards
+        <br>if i != random {
+           <br> deck[random], deck[i] = deck[i], deck[random]
+        <br>}
+    <br>}
+    <br>return deck
+<br>}   
 </body>
 
 </html>
