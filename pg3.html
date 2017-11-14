@@ -26,17 +26,17 @@
     <br>import "math"
 <br>
     <br>type Shape interface {
-    <br>Area() float64
+    <br>&#8195;Area() float64
    <br> }
 <br>
     <br>type Square struct { // Note: no "implements" declaration, needs to be type float64 because of the math import math.Pow function
-    <br>    side float64
+    <br> &#8195;   side float64
     <br>}
 <br>
     <br>func (sq Square) Area() float64 { return sq.side * sq.side }
 <br>
     <br>type Circle struct { // No "implements" declaration here either, needs to be type float64 because of the math import math.Pow function
-        <br>radius float64
+        <br>&#8195;radius float64
     <br>}
 <br>
     <br>func (c Circle) Area() float64 { return math.Pi * math.Pow(c.radius, 2) } 
@@ -45,25 +45,27 @@
 <br>package main
 <br>import "fmt"
 <br>func main() {
-    <br>fmt.Println("Hello World!")
+    <br>&#8195;fmt.Println("Hello World!")
 <br>}
 <p>
+Example of Scope and Variables
+<br>
 package main
 <br>
 <br>import "fmt"
 <br>
 <br>func main() {
-    <br>sum := 1
-    <br>fmt.Println(sum)
-    <br>sum += 1
-   <br> fmt.Println(sum)
+    <br>&#8195;sum := 1
+    <br>&#8195;fmt.Println(sum)
+    <br>&#8195;sum += 1
+   <br> &#8195;fmt.Println(sum)
    <br> 
-    <br>i := 0
-    <br>for (i < 10) {
-        <br>sum += 1
-        <br>i += 1
-    <br>}
-<br>    fmt.Println(sum)
+    <br>&#8195;i := 0
+    <br>&#8195;for (i < 10) {
+        <br>&#8195;&#8195;sum += 1
+        <br>&#8195;&#8195;i += 1
+    <br>&#8195;}
+<br>    &#8195;fmt.Println(sum)
 <br>}</p>
 </body>
 

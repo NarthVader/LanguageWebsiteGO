@@ -81,15 +81,15 @@
     <br>Hash tables are built into the language. Basically there is a channel T that allows sending values of type T between concurrent Go processes.
     <br>The type keyword can be used to define a new named type, this obviously needs to be a distinct name. 
     <br>Conversion between types is allowed. For example assigning a named type to an integer value. <br>Why would we ever do this? You ask. Well think of iPv4 addressing. You would need to make a named type iPv4
-    <br><br>type iPv4
+    <br><br>&#8195;type iPv4
     <br>Since we know that these addresses are 32 unsigned integers we can do
-    <br>type iPv4 uint32
+    <br>&#8195;type iPv4 uint32
     <br>Now we have a named type iPv4 which are all defined to be unsigned 32 bit integers. Pretty sweet, huh?
     </p>
     <p> 
     Function types are indicated by the func keyword; they take zero or more parameters and return zero or more values, all of which are typed
     <br><br>func (numberA int64) isNumber1?/() bool {
-   <br>     return numberA == 1
+   <br> &#8195;    return numberA == 1
    <br> }
     </p>
     <p>
@@ -98,7 +98,7 @@
     </p>
     <p> 
     Can access other packages or libraries from GitHub or wherever, with the go get command by specifying the full path name
-    <br>go get github.com/user_name/package_name
+    <br>&#8195;go get github.com/user_name/package_name
     </p>
     <p>
     Go also supports parallel and asynchronous computing. This is done using goroutines which are a type process, uses channels to send messages between goroutines. Pretty technical, but we felt like you should know this exists! In fact, a study done by Google comparing unfamiliar Users and expert Users, "found that that the non-expert tended to write divide-and-conquer algorithms with one go statement per recursion, while the expert wrote distribute-work-synchronize programs using one goroutine per processor. The expert's programs were usually faster, but also longer."

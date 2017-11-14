@@ -25,56 +25,85 @@
 
 <br>//import multiple libraries/packages
 <br><br>import (
-<br>    "fmt"
+<br>  "fmt"
 <br>)<br>
 <br>
 <br>//takes an array(slice) of integers and prints all values
 <br>func printSlice(s []int) {
-<br>//len and cap are built in functions in GO. very C style print function
-    <br>fmt.Printf("len=%d cap=%d %v\n", len(s), cap(s), s)
+<br>&#8195;//len and cap are built in functions in GO. very C style print function
+    <br>&#8195; fmt.Printf("len=%d cap=%d %v\n", len(s), cap(s), s)
 }<br>
 <br>
 //finds all multiples of 3 and 5 for a given number
 <br>func findMult(value int) []int {
-    <br>//example of a "dynamic" array hack, just don't initialize with size
-    <br>//we'll use append to make the slice behave dynamic
-    <br>var m []int
-    <br>//iterator value (like C)
-    <br>i := 0
+    <br>&#8195;//example of a "dynamic" array hack, just don't initialize with size
+    <br>&#8195;//we'll use append to make the slice behave dynamic
+    <br>&#8195;var m []int
+    <br>&#8195;//iterator value (like C)
+    <br>&#8195;i := 0
 <br>
-    <br>//simpler for loop format
-    <br>for i <= value {
-    <br>    // can also use if math.Mod(i, 3) || math.Mod(i,5)
-    <br>    if i%3 == 0 || i%5 == 0 {
-            <br>//append the mult array with the multiple, append is also a built in
-            <br>//just a note, this is very inefficient, but i thought it was a good demonstration of using arrays and built in functions
-            <br>m = append(m, i)
-            <br>//debug function that prints the array/slice given
-            <br>printSlice(m)
-       <br> }
-    <br>}
-    <br>//returns array of multiples
-    <br>return m
+    <br>&#8195;//simpler for loop format
+    <br>&#8195;for i <= value {
+    <br>    &#8195;&#8195;// can also use if math.Mod(i, 3) || math.Mod(i,5)
+    <br>    &#8195;&#8195;if i%3 == 0 || i%5 == 0 {
+            <br>&#8195;&#8195;&#8195;//append the mult array with the multiple, append is also a built in
+            <br>&#8195;&#8195;&#8195;//just a note, this is very inefficient, but i thought it was a good demonstration of using arrays and built in functions
+            <br>&#8195;&#8195;&#8195;m = append(m, i)
+            <br>&#8195;&#8195;&#8195;//debug function that prints the array/slice given
+            <br>&#8195;&#8195;&#8195;printSlice(m)
+       <br> &#8195;&#8195;}
+    <br>&#8195;}
+    <br>&#8195;//returns array of multiples
+    <br>&#8195;return m
 <br>}
 <br><br>
 <br>func sum(x[] int) int {    
-    <br>//static variable, static scope
-    <br>total := 0
-    <br>for _, valuex := range x {
-       <br> total += valuex
-    <br>}
-    <br>return total
+    <br>&#8195;//static variable, static scope
+    <br>&#8195;total := 0
+    <br>&#8195;for _, valuex := range x {
+       <br> &#8195;&#8195;total += valuex
+    <br>&#8195;}
+    <br>&#8195;return total
 <br>}
 
 <br>func main() {
-    <br>//array of integers to find multiples on
-    <br>num := 30
-    <br>//somewhat functional. set the value of a new array of ints to that of the return from findMult()
-    <br>var mult []int := findMult(num)
-    <br>//fmt print the integer returned by feeding the array/slice we just made to a sum function
-    <br>fmt.Println(sum(mult))
+    <br>&#8195;//array of integers to find multiples on
+    <br>&#8195;num := 30
+    <br>&#8195;//somewhat functional. set the value of a new array of ints to that of the return from findMult()
+    <br>&#8195;var mult []int := findMult(num)
+    <br>&#8195;//fmt print the integer returned by feeding the array/slice we just made to a sum function
+    <br>&#8195;fmt.Println(sum(mult))
 <br>}
     </p> 
+    <p>
+/*Takes input string from user and reverses the characters*/
+<br>package main
+<br>
+<br>import (
+<br>&#8195;    "fmt"
+<br>&#8195;    "os"
+<br>&#8195;    "bufio"
+<br>)
+<br>
+<br>func reverseString(input string) (reverse string){
+<br>&#8195;  for _, v := range input {
+<br>&#8195;&#8195;    reverse = string(v) + reverse
+<br>&#8195;  }
+<br>&#8195;  return
+<br>}
+
+<br>func main(){
+<br>&#8195;    readIn := bufio.NewReader(os.Stdin)
+<br>&#8195;    fmt.Print("Enter string to be reversed: ")
+<br>&#8195;    input, _ := readIn.ReadString('\n')
+<br>
+<br>&#8195;   reverse := reverseString(input)
+<br>&#8195;    fmt.Print("Given string: ")
+<br>&#8195;        fmt.Println(input)
+<br>        
+<br>&#8195;    fmt.Print("Reversed string: ")
+<br>&#8195;    fmt.Println(reverse)        
+<br>}
 
 <p>
 package main
@@ -83,59 +112,58 @@ package main
 <br>import "math/rand"
 <br><br>
 <br>func main() {
-    <br>fmt.Print("How many dice? (1-5):")
-    <br>var numDice int
-    <br>fmt.Scanln(&numDice)
+    <br>&#8195;fmt.Print("How many dice? (1-5):")
+    <br>&#8195;var numDice int
+    <br>&#8195;fmt.Scanln(&numDice)
     
-   <br> fmt.Print("How many rolls? (1-100):")
-    <br>var numRolls int
-    <br>fmt.Scanln(&numRolls)
+   <br> &#8195;fmt.Print("How many rolls? (1-100):")
+    <br>&#8195;var numRolls int
+    <br>&#8195;fmt.Scanln(&numRolls)
     
     
-  <br>  rollThoseDice(numDice, numRolls)
+  <br>  &#8195;rollThoseDice(numDice, numRolls)
 <br>}
 
 <br>func rollThoseDice(dice int, rolls int){
   <br>
-<br>  var count int
-  <br>count = 1
+<br>  &#8195;var count int
+  <br>&#8195;count = 1
  <br> 
-  <br>var origDice int
-<br>  origDice = dice
+  <br>&#8195;var origDice int
+<br>  &#8195;origDice = dice
   
-  <br>var score int
-  <br>score = 0
+  <br>&#8195;var score int
+  <br>&#8195;score = 0
   <br>
-  <br>for count <= rolls {
-      <br> 
-        <br>fmt.Print("Roll #")
-        <br>fmt.Print(count)
-        <br>fmt.Print(": ")
+  <br>&#8195;for count <= rolls {
+        <br>&#8195;&#8195;fmt.Print("Roll #")
+        <br>&#8195;&#8195;fmt.Print(count)
+        <br>&#8195;&#8195;fmt.Print(": ")
         <br>
-        <br>for dice > 0 {
+        <br>&#8195;&#8195;for dice > 0 {
             <br>  
-              <br>var tempRoll int
-              <br>tempRoll = rand.Intn(6)+1
-              <br>score += tempRoll
-              <br>fmt.Print(tempRoll)
-              <br>if dice > 1 {
-                <br>fmt.Print(",")
-              <br>}
-              <br>dice--
-       <br> }
+              <br>&#8195;&#8195;&#8195;var tempRoll int
+              <br>&#8195;&#8195;&#8195;tempRoll = rand.Intn(6)+1
+              <br>&#8195;&#8195;&#8195;score += tempRoll
+              <br>&#8195;&#8195;&#8195;fmt.Print(tempRoll)
+              <br>&#8195;&#8195;&#8195;if dice > 1 {
+                <br>&#8195;&#8195;&#8195;&#8195;fmt.Print(",")
+              <br>&#8195;&#8195;&#8195;}
+              <br>&#8195;&#8195;&#8195;dice--
+       <br> &#8195;&#8195;}
         <br>
-      <br>dice = origDice
-      <br>fmt.Print("\n")
-      <br>count++
- <br> }
+      <br>&#8195;&#8195;dice = origDice
+      <br>&#8195;&#8195;fmt.Print("\n")
+      <br>&#8195;&#8195;count++
+ <br> &#8195;&#8195;}
   <br>
-  <br>fmt.Print("Score: ")
-  <br>fmt.Print(score)
-  <br>fmt.Print("\n")
+  <br>&#8195;fmt.Print("Score: ")
+  <br>&#8195;fmt.Print(score)
+  <br>&#8195;fmt.Print("\n")
  <br> 
- <br> fmt.Print("Average Roll: ")
-  <br>fmt.Print(float64(score)/float64(rolls))
-  <br>fmt.Print("\n")
+ <br> &#8195;fmt.Print("Average Roll: ")
+  <br>&#8195;fmt.Print(float64(score)/float64(rolls))
+  <br>&#8195;fmt.Print("\n")
   <br>
 <br>}
 </p>
@@ -148,78 +176,80 @@ package main
 <br><br><br>
 
 <br>/*
-<br><br>
+<br>
 <br>import "bufio"
 <br>import "os"
 <br>import "strconv"
-<br><br>
+<br>
 <br>Card Dealer (Soon to be black jack, I hope...)
-<br><br>
+<br>
 <br>Author: Garett Skaar
-<br><br>
+<br>
 <br>Go LW1 program CS-354
-<br><br>
+<br>
 <br>*/
-<br><br>
+<br>
 <br>//Main will build a deck of cards, shuffle the cards and ask for a number
 <br>//of cards to be dealt.
-<br><br>func main() {
+<br>func main() {
 <br>
-    <br>//Build a new deck, unshuffled...
-    <br>deck := buildDeck()
-    <br>//Shuffle deck...
-    <br>shuffleDeck(deck)
-    <br>//prompt user
-    <br>fmt.Println("Deal how many cards?")
-    <br>var userInput int
-    <br>//scan standard input and check for errors
-    <br>_, err := fmt.Scanf("%d", &userInput)
-    <br>if err != nil {
-    <br>        fmt.Println(err)
-   <br> }
-    <br>//display the desired amount of cards
-    <br>Deal(deck, userInput)
-   <br><br> 
-    <br>/*
-    <br>needs implemented for black jack
+    <br>&#8195;//Build a new deck, unshuffled...
+    <br>&#8195;deck := buildDeck()
+    <br>&#8195;//Shuffle deck...
+    <br>&#8195;shuffleDeck(deck)
+    <br>&#8195;//prompt user
+    <br>&#8195;fmt.Println("Deal how many cards?")
+    <br>&#8195;var userInput int
+    <br>&#8195;//scan standard input and check for errors
+    <br>&#8195;_, err := fmt.Scanf("%d", &userInput)
+    <br>&#8195;if err != nil {
+    <br>&#8195;&#8195;        fmt.Println(err)
+   <br> &#8195;}
+    <br>&#8195;//display the desired amount of cards
+    <br>&#8195;Deal(deck, userInput)
+   <br>
+    <br>&#8195;/*
+    <br>&#8195;needs implemented for black jack
     <br>
-    <br>if strings.Contains(userInput, "y"){
-     <br>   fmt.Println()
-     <br>   startGame(deck)
-    <br>} else if strings.Contains(userInput, "n"){
-      <br>  fmt.Println("Maybe next time!")
-    <br>} else{
-        <br>fmt.Println("Maybe next time!")
-    <br>}
-    <br>*/
- <br>   
-<br>}
+    <br>&#8195;if strings.Contains(userInput, "y"){
+     <br>&#8195;&#8195;   fmt.Println()
+     <br>&#8195;&#8195;   startGame(deck)
+    <br>&#8195;} else if strings.Contains(userInput, "n"){
+      <br>&#8195;&#8195;  fmt.Println("Maybe next time!")
+    <br>&#8195;} else{
+        <br>&#8195;&#8195;fmt.Println("Maybe next time!")
+    <br>&#8195;}
+    <br>&#8195;*/
+  
+<br>&#8195;}
+<br>
 <br>//Deals the specified number of cards by user
 <br>func Deal(d Deck, n int) {
-   <br> for i := 0; i < n; i++ {
-       <br> fmt.Println(d[i].value,"of",d[i].suit)
-    <br>}
+   <br>&#8195; for i := 0; i < n; i++ {
+       <br>&#8195;&#8195; fmt.Println(d[i].value,"of",d[i].suit)
+    <br>&#8195;}
 <br>}
+<br>
 <br>//needs work
 <br>func startGame(deck Deck) {
 <br>
-<br>    dealer := []Card{}
-<br>    player := []Card{}
-<br>    //var dealerVal int = 0
-<br>    //var playerVal int = 0
+<br>&#8195;    dealer := []Card{}
+<br>&#8195;    player := []Card{}
+<br>&#8195;    //var dealerVal int = 0
+<br>&#8195;    //var playerVal int = 0
 <br>    
-<br>    //bust bool := false
-<br>    fmt.Println("Dealing cards...")
-<br>    for i :=0; i < len(deck) - 1;i++ {
-<br>        dealer = append(dealer, deck[i])
-<br>        player = append(player, deck[i+1])
-<br>    }
+<br>&#8195;    //bust bool := false
+<br>&#8195;    fmt.Println("Dealing cards...")
+<br>&#8195;    for i :=0; i < len(deck) - 1;i++ {
+<br>&#8195;&#8195;        dealer = append(dealer, deck[i])
+<br>&#8195;&#8195;        player = append(player, deck[i+1])
+<br>&#8195;    }
 <br>}
 <br>
 <br>//struct type holds suit type and value (Face, Ace, or Number)
 <br>type Card struct {
-<br>    value string
-<br>    suit string
+<br>&#8195;    value string
+<br>&#8195;    suit string
 <br>}
 <br>
 <br>//Array of Card structs
@@ -230,43 +260,43 @@ package main
 <br>//Builds and returns a new Card array
 <br>func buildDeck() (deck Deck) {
 <br>
-<br>    //all valid values of a card
-<br>    values := []string{"Two", "Three", "Four", "Five", "Six", "Seven",
-<br>            "Eight", "Nine", "Ten", "Jack", "Queen", "King", "Ace"}
+<br> &#8195;   //all valid values of a card
+<br> &#8195;   values := []string{"Two", "Three", "Four", "Five", "Six", "Seven",
+<br> &#8195;           "Eight", "Nine", "Ten", "Jack", "Queen", "King", "Ace"}
 <br>            
-<br>    //all valid suits   
-<br>    suits := []string{"Hearts", "Diamonds", "Clubs", "Spades"}
-<br>    <br>
-    // Loop over each value and suit appending to the deck
-<br>    for i := 0; i < len(values); i++ {
-    <br>    for n := 0; n < len(suits); n++ {
-        <br>    card := Card{
-            <br>    value: values[i],
-                <br>suit: suits[n],
-            <br>}
-            <br>deck = append(deck, card)
-        <br>}
-    <br>}
-    <br>return deck     
+<br> &#8195;   //all valid suits   
+<br> &#8195;   suits := []string{"Hearts", "Diamonds", "Clubs", "Spades"}
+<br>    
+   &#8195; // Loop over each value and suit appending to the deck
+<br> &#8195;   for i := 0; i < len(values); i++ {
+    <br>  &#8195;&#8195;  for n := 0; n < len(suits); n++ {
+        <br>  &#8195;&#8195;&#8195;  card := Card{
+            <br> &#8195;&#8195;&#8195;   value: values[i],
+                <br>&#8195;&#8195;&#8195;suit: suits[n],
+            <br>&#8195;&#8195;&#8195;}
+            <br>&#8195;&#8195;deck = append(deck, card)
+        <br>&#8195;&#8195;}
+    <br>&#8195;}
+    <br>&#8195;return deck     
      <br>   
 <br>}
 <br>//Returns a shuffled Deck of cards
 <br>func shuffleDeck(deck Deck) Deck {
 <br>
-    <br>//new seed based on current time
-    <br>rand.Seed(time.Now().UnixNano())
+    <br>&#8195;//new seed based on current time
+    <br>&#8195;rand.Seed(time.Now().UnixNano())
    <br> 
-    <br>//Loops through deck, creates random int within deck size and current index, and
-    <br>//swaps card postions if the index and random int are different.
+    <br>&#8195;//Loops through deck, creates random int within deck size and current index, and
+    <br>&#8195;//swaps card postions if the index and random int are different.
    <br> 
-    <br>for i := 1; i < len(deck); i++ {
+    <br>&#8195;for i := 1; i < len(deck); i++ {
     <br>    
-    <br>    random := rand.Intn(i + 1)
-     <br>   //swap the cards
-        <br>if i != random {
-           <br> deck[random], deck[i] = deck[i], deck[random]
-        <br>}
-    <br>}
+    <br> &#8195;&#8195;   random := rand.Intn(i + 1)
+     <br> &#8195;&#8195;  //swap the cards
+        <br>&#8195;&#8195;if i != random {
+           <br> &#8195;&#8195;&#8195;deck[random], deck[i] = deck[i], deck[random]
+        <br>&#8195;&#8195;}
+    <br>&#8195;}
     <br>return deck
 <br>}   
 </body>
