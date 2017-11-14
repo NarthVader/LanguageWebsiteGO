@@ -27,62 +27,62 @@
     <p>
     Syntax and Type:
     As previously mentioned, it looks a lot like C. Go is based off of "the best parts" of C++, Java, and Python. Improvements made to improve language readability and simplicity, as well as memory safety. Variable declaration and initialization done through type inference. This mostly means that Go is object oriented in the sense that it allows types and methods, plus the style feels like object oriented java with strict interface inheritance. The "object" in Go is just a struct (like C). Methods can be designed for primitive types such as int. It is an imperiative language, meaning that it uses statements to describe the state of the program, in essence describing how your program operates. Other imperative languages FORTRAN, ALGOL, Pascal, BASIC, Java, C, Python, Javascript, Ruby, etc. Go has loops, statements, selections, etc. There are many things that Go won't do, for a variety of reasons that Go designers (aka people much smarter than us), have decided on. These are: 
-
-    "No ternary testing operation
-    No generic types
-    No exceptions
-    No assertations
-    No implements for interface
-    No algebraic types
-    No pointer arithmetic
-    No semicolons and no opening brace on the next line
-    No implicit numeric conversions
-    No untagged unions, as in C
-    No overloading of methods and operators
-    No type inheritance"
-    
+<br>
+    <br>"No ternary testing operation
+    <br>No generic types
+    <br>No exceptions
+    <br>No assertations
+    <br>No implements for interface
+    <br>No algebraic types
+    <br>No pointer arithmetic
+    <br>No semicolons and no opening brace on the next line
+    <br>No implicit numeric conversions
+    <br>No untagged unions, as in C
+    <br>No overloading of methods and operators
+    <br>No type inheritance"
+    <br><br>
     Go: 
-    x := 0
-    s:= "Hello, World!"
-    No need to specify the types of variables, or use semicolons (can use semicolon, but it's implicit at the end of a line)
-    Go can return multiple values!
-    Go convention for error return: result, err
-    Go uses range expression to iterate over arrays, strings, maps, channels (concurrency).
-
+    <br>x := 0
+    <br>s:= "Hello, World!"
+    <br>No need to specify the types of variables, or use semicolons (can use semicolon, but it's implicit at the end of a line)
+    <br>Go can return multiple values!
+    <br>Go convention for error return: result, err
+    <br>Go uses range expression to iterate over arrays, strings, maps, channels (concurrency).
+<br><br>
     Others (C): 
-    int x = 0;
-    const char* s = "Hello, World!";
-    Usually only return one value.
-    
+    <br>int x = 0;
+    <br>const char* s = "Hello, World!";
+    <br>Usually only return one value.
+   <br><br> 
     All the basic operators exist for arithmetic (+, -, *, /, bitwise, etc.)
     Has 4 different tokens (think interpreter assignment where we parsed tokens for lexical/syntax analysis) which are: identifiers, keywords (for, while, etc.), operators and delimiters, and literals. Whitespace, tabs, returns, and newlines are usually ignored unless separating tokens and newline may act as a semicolon placeholder. Comments are Java style (//, or /* blah */).
-    Go has a precedence for the operators as follows: 
-    "
+    <br>Go has a precedence for the operators as follows: 
+    <br>"
         Precedence    Operator
-    5             *  /  %  <<  >>  &  &^
-    4             +  -  |  ^
-    3             ==  !=  <  <=  >  >=
-    2             &&
-    1             ||
+    <br>5             *  /  %  <<  >>  &  &^
+    <br>4             +  -  |  ^
+    <br>3             ==  !=  <  <=  >  >=
+    <br>2             &&
+    <br>1             ||
     "
-    and a Left to Right evaluation order.
+    <br>and a Left to Right evaluation order.
 
-    Has some functional programming features such as anonymous functions, passing functions as values, closures, etc. 
+    <br>Has some functional programming features such as anonymous functions, passing functions as values, closures, etc. 
 
     </p>  
     <p>
     Go has several built-in types: numeric (byte, int64, float32, etc.), boolean, and string. Character strings are immutable, operators and keywords concatenate, and compare. 
     Define custom "objects" or things of differing Type with struct.
-    Can have an array of custom Type by specifying explicit length. Each array of differing length is technically a different type.
-    [n]T
-    Arrays can also be dynamic, in Go this is referred to as a slice, []T
-    Pointers for type denoted: *T. NO POINTER ARITHMETIC!!! Memory Safety!!!
-    Maps are a little weird, and the type map[K]V is the type of hash tables mapping type-K keys to type-V values. Hash tables are built into the language. Basically there is a channel T that allows sending values of type T between concurrent Go processes.
-    The type keyword can be used to define a new named type, this obviously needs to be a distinct name. Conversion between types is allowed. For example assigning a named type to an integer value. Why would we ever do this? You ask. Well think of iPv4 addressing. You would need to make a named type iPv4
-    type iPv4
-    Since we know that these addresses are 32 unsigned integers we can do
-    type iPv4 uint32
-    Now we have a named type iPv4 which are all defined to be unsigned 32 bit integers. Pretty sweet, huh?
+    <br>Can have an array of custom Type by specifying explicit length. Each array of differing length is technically a different type.
+    <br>[n]T
+    <br>Arrays can also be dynamic, in Go this is referred to as a slice, []T
+    <br>Pointers for type denoted: *T. NO POINTER ARITHMETIC!!! Memory Safety!!!
+    <br>Maps are a little weird, and the type map[K]V is the type of hash tables mapping type-K keys to type-V values. Hash tables are built into the language. Basically there is a channel T that allows sending values of type T between concurrent Go processes.
+    <br>The type keyword can be used to define a new named type, this obviously needs to be a distinct name. Conversion between types is allowed. For example assigning a named type to an integer value. <br>Why would we ever do this? You ask. Well think of iPv4 addressing. You would need to make a named type iPv4
+    <br>type iPv4
+    <br>Since we know that these addresses are 32 unsigned integers we can do
+    <br>type iPv4 uint32
+    <br>Now we have a named type iPv4 which are all defined to be unsigned 32 bit integers. Pretty sweet, huh?
     </p>
     <p> 
     Function types are indicated by the func keyword; they take zero or more parameters and return zero or more values, all of which are typed
@@ -92,29 +92,11 @@
     </p>
     <p>
     Go is very similar to Java with its inheritance. You design interfaces for your objects and explicitly typed values that are of the interface type inherit its characteristics.
-    Go also has something similar to the superclass Object with the empty interface interface{}
-
-    import "math"
-
-    type Shape interface {
-    Area() float64
-    }
-
-    type Square struct { // Note: no "implements" declaration
-        side float64
-    }
-
-    func (sq Square) Area() float64 { return sq.side * sq.side }
-
-    type Circle struct { // No "implements" declaration here either
-        radius float64
-    }
-
-    func (c Circle) Area() float64 { return math.Pi * math.Pow(c.radius, 2) }
+   <br> Go also has something similar to the superclass Object with the empty interface interface{}
     </p>
     <p> 
     Can access other packages or libraries from GitHub or wherever, with the go get command by specifying the full path name
-    go get github.com/user_name/package_name
+    <br>go get github.com/user_name/package_name
     </p>
     <p>
     Go also supports parallel and asynchronous computing. This is done using goroutines which are a type process, uses channels to send messages between goroutines. Pretty technical, but we felt like you should know this exists! In fact, a study done by Google comparing unfamiliar Users and expert Users, "found that that the non-expert tended to write divide-and-conquer algorithms with one go statement per recursion, while the expert wrote distribute-work-synchronize programs using one goroutine per processor. The expert's programs were usually faster, but also longer."
@@ -122,9 +104,9 @@
     </p>
 
     <p> Sources:
-    The Go Language Report. Github books. https://www.gitbook.com/book/kuree/the-go-programming-language-report/details
-    Go Programming main site. https://golang.org/
-    and of course, wikipedia. https://en.wikipedia.org/wiki/Go_(programming_language)
+   <br> The Go Language Report. Github books. https://www.gitbook.com/book/kuree/the-go-programming-language-report/details
+   <br> Go Programming main site. https://golang.org/
+   <br> and of course, wikipedia. https://en.wikipedia.org/wiki/Go_(programming_language)
     </p>
 
 </body>

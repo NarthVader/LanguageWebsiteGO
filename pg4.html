@@ -21,123 +21,123 @@
             <li id="navItem"><a id="navLink" href="pg5.html">Language Comparison</a></li>
         </ul>
     </nav>
-    <p>  package main
+    <p>  package main<br><br>
 
-//import multiple libraries/packages
-import (
-    "fmt"
-)
-
-//takes an array(slice) of integers and prints all values
-func printSlice(s []int) {
-//len and cap are built in functions in GO. very C style print function
-    fmt.Printf("len=%d cap=%d %v\n", len(s), cap(s), s)
-}
-
+<br>//import multiple libraries/packages
+<br>import (
+<br>    "fmt"
+<br>)<br>
+<br>
+<br>//takes an array(slice) of integers and prints all values
+<br>func printSlice(s []int) {
+<br>//len and cap are built in functions in GO. very C style print function
+    <br>fmt.Printf("len=%d cap=%d %v\n", len(s), cap(s), s)
+}<br>
+<br>
 //finds all multiples of 3 and 5 for a given number
-func findMult(value int) []int {
-    //example of a "dynamic" array hack, just don't initialize with size
-    //we'll use append to make the slice behave dynamic
-    var m []int
-    //iterator value (like C)
-    i := 0
+<br>func findMult(value int) []int {
+    <br>//example of a "dynamic" array hack, just don't initialize with size
+    <br>//we'll use append to make the slice behave dynamic
+    <br>var m []int
+    <br>//iterator value (like C)
+    <br>i := 0
+<br>
+    <br>//simpler for loop format
+    <br>for i <= value {
+    <br>    // can also use if math.Mod(i, 3) || math.Mod(i,5)
+    <br>    if i%3 == 0 || i%5 == 0 {
+            <br>//append the mult array with the multiple, append is also a built in
+            <br>//just a note, this is very inefficient, but i thought it was a good demonstration of using arrays and built in functions
+            <br>m = append(m, i)
+            <br>//debug function that prints the array/slice given
+            <br>printSlice(m)
+       <br> }
+    <br>}
+    <br>//returns array of multiples
+    <br>return m
+<br>}
+<br><br>
+<br>func sum(x[] int) int {    
+    <br>//static variable, static scope
+    <br>total := 0
+    <br>for _, valuex := range x {
+       <br> total += valuex
+    <br>}
+    <br>return total
+<br>}
 
-    //simpler for loop format
-    for i <= value {
-        // can also use if math.Mod(i, 3) || math.Mod(i,5)
-        if i%3 == 0 || i%5 == 0 {
-            //append the mult array with the multiple, append is also a built in
-            //just a note, this is very inefficient, but i thought it was a good demonstration of using arrays and built in functions
-            m = append(m, i)
-            //debug function that prints the array/slice given
-            printSlice(m)
-        }
-    }
-    //returns array of multiples
-    return m
-}
-
-func sum(x[] int) int {    
-    //static variable, static scope
-    total := 0
-    for _, valuex := range x {
-        total += valuex
-    }
-    return total
-}
-
-func main() {
-    //array of integers to find multiples on
-    num := 30
-    //somewhat functional. set the value of a new array of ints to that of the return from findMult()
-    var mult []int := findMult(num)
-    //fmt print the integer returned by feeding the array/slice we just made to a sum function
-    fmt.Println(sum(mult))
-}
+<br>func main() {
+    <br>//array of integers to find multiples on
+    <br>num := 30
+    <br>//somewhat functional. set the value of a new array of ints to that of the return from findMult()
+    <br>var mult []int := findMult(num)
+    <br>//fmt print the integer returned by feeding the array/slice we just made to a sum function
+    <br>fmt.Println(sum(mult))
+<br>}
     </p> 
 
 <p>
 package main
-
-import "fmt"
-import "math/rand"
-
-func main() {
-    fmt.Print("How many dice? (1-5):")
-    var numDice int
-    fmt.Scanln(&numDice)
+<br>
+<br>import "fmt"
+<br>import "math/rand"
+<br><br>
+<br>func main() {
+    <br>fmt.Print("How many dice? (1-5):")
+    <br>var numDice int
+    <br>fmt.Scanln(&numDice)
     
-    fmt.Print("How many rolls? (1-100):")
-    var numRolls int
-    fmt.Scanln(&numRolls)
+   <br> fmt.Print("How many rolls? (1-100):")
+    <br>var numRolls int
+    <br>fmt.Scanln(&numRolls)
     
     
-    rollThoseDice(numDice, numRolls)
-}
+  <br>  rollThoseDice(numDice, numRolls)
+<br>}
 
-func rollThoseDice(dice int, rolls int){
+<br>func rollThoseDice(dice int, rolls int){
+  <br>
+<br>  var count int
+  <br>count = 1
+ <br> 
+  <br>var origDice int
+<br>  origDice = dice
   
-  var count int
-  count = 1
-  
-  var origDice int
-  origDice = dice
-  
-  var score int
-  score = 0
-  
-  for count <= rolls {
-       
-        fmt.Print("Roll #")
-        fmt.Print(count)
-        fmt.Print(": ")
-        
-        for dice > 0 {
-              
-              var tempRoll int
-              tempRoll = rand.Intn(6)+1
-              score += tempRoll
-              fmt.Print(tempRoll)
-              if dice > 1 {
-                fmt.Print(",")
-              }
-              dice--
-        }
-        
-      dice = origDice
-      fmt.Print("\n")
-      count++
-  }
-  
-  fmt.Print("Score: ")
-  fmt.Print(score)
-  fmt.Print("\n")
-  
-  fmt.Print("Average Roll: ")
-  fmt.Print(float64(score)/float64(rolls))
-  fmt.Print("\n")
-  
-}
+  <br>var score int
+  <br>score = 0
+  <br>
+  <br>for count <= rolls {
+      <br> 
+        <br>fmt.Print("Roll #")
+        <br>fmt.Print(count)
+        <br>fmt.Print(": ")
+        <br>
+        <br>for dice > 0 {
+            <br>  
+              <br>var tempRoll int
+              <br>tempRoll = rand.Intn(6)+1
+              <br>score += tempRoll
+              <br>fmt.Print(tempRoll)
+              <br>if dice > 1 {
+                <br>fmt.Print(",")
+              <br>}
+              <br>dice--
+       <br> }
+        <br>
+      <br>dice = origDice
+      <br>fmt.Print("\n")
+      <br>count++
+ <br> }
+  <br>
+  <br>fmt.Print("Score: ")
+  <br>fmt.Print(score)
+  <br>fmt.Print("\n")
+ <br> 
+ <br> fmt.Print("Average Roll: ")
+  <br>fmt.Print(float64(score)/float64(rolls))
+  <br>fmt.Print("\n")
+  <br>
+<br>}
 </p>   
 </body>
 
