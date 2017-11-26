@@ -5,10 +5,12 @@ import "strings"
 import "strconv"
 import "time"
 
+
 func main() {
 
 //variable setup
  var roll, scoreDiff int
+ var keepGoing bool
  var diceStorage[5] int
  rand.Seed(time.Now().UnixNano()) //rand seeded to system time
 
@@ -17,65 +19,84 @@ func main() {
 
  printTitle()
  
- // Initial roll of 5 dice, adds them to the array of dice rolls,
- // and then prints the ascii die.
- //===============================================================
- i := 0
- for i < 5 {
-    roll = (rand.Intn(600)/100) + 1
-    diceStorage[i] = roll
-    i++
-  }
-    printDiceArray(diceStorage)
-    scoreDiff = getScore(diceStorage)
-  //===============================================================
-  
-  
-  // Asking the user for which die they want to reroll, and storing it as a string
-  //===============================================================
-  reRollPrompt()
-  var rerolls string
-  fmt.Scanln(&rerolls)
-  //===============================================================
-  
-  //This stores an array of the users input, and then converts it to int values, 
-  //then generates a new random number for that index in the diceStorage array
-  //===============================================================
-  
-  var inputStorage[] string
-  inputStorage = strings.Split(rerolls, "")
-  fmt.Println("\nUser Selected Dice to Re-Roll: ",inputStorage,"\n")
-  
-  j := 0
-  for j < len(inputStorage){
-    
-    num, err := strconv.Atoi(inputStorage[j])
-    if err != nil {fmt.Println(err)}
+ fmt.Print("\nWould you like to play a game? (Y or N): ")
+ var start string
+ fmt.Scanln(&start)
+ keepGoing = set_keepGoing(start)
 
-    diceStorage[num - 1] = (rand.Intn(600)/100)+1
-    
-    j++
-  }
-  //fmt.Println(diceStorage)
-  //===============================================================
-  
-  
-  // Prints out new array containing kept and rerolled dice
-  //===============================================================
-  printDiceArray(diceStorage)
-  scoreDiff = getScore(diceStorage) - scoreDiff
-  
-  if scoreDiff >= 0 {
-    fmt.Println("Score Gain after Re-Rolls: +",scoreDiff)
-  } else {
-    fmt.Println("Score Gain after Re-Rolls: ",scoreDiff)
-  }
-  
-  
-  //===============================================================
+   for keepGoing {
+         // Initial roll of 5 dice, adds them to the array of dice rolls,
+         // and then prints the ascii die.
+         //===============================================================
+         i := 0
+         for i < 5 {
+            roll = (rand.Intn(600)/100) + 1
+            diceStorage[i] = roll
+            i++
+          }
+            printDiceArray(diceStorage)
+            scoreDiff = getScore(diceStorage)
+          //===============================================================
+          
+          
+          // Asking the user for which die they want to reroll, and storing it as a string
+          //===============================================================
+          reRollPrompt()
+          var rerolls string
+          fmt.Scanln(&rerolls)
+          //===============================================================
+          
+          
+          //This stores an array of the users input, and then converts it to int values, 
+          //then generates a new random number for that index in the diceStorage array
+          //===============================================================
+          var inputStorage[] string
+          inputStorage = strings.Split(rerolls, "")
+          fmt.Println("\nUser Selected Dice to Re-Roll: ",inputStorage,"\n")
+          
+          j := 0
+          for j < len(inputStorage){
+            
+            num, err := strconv.Atoi(inputStorage[j])
+            if err != nil {fmt.Println(err)}
+        
+            diceStorage[num - 1] = (rand.Intn(600)/100)+1
+            
+            j++
+          }
+          //fmt.Println(diceStorage)
+          //===============================================================
+          
+          
+          // Prints out new array containing kept and rerolled dice
+          //===============================================================
+          printDiceArray(diceStorage)
+          scoreDiff = getScore(diceStorage) - scoreDiff
+          
+          if scoreDiff >= 0 {
+            fmt.Println("Score Gain after Re-Rolls: +",scoreDiff)
+          } else {
+            fmt.Println("Score Gain after Re-Rolls: ",scoreDiff)
+          }
+         //===============================================================
+         
+         fmt.Print("\n\nPlay another? (Y or N): ")
+         var start string
+         fmt.Scanln(&start)
+         keepGoing = set_keepGoing(start)
 
+    }
+    fmt.Println("Thanks for playing!")
 }
 
+func set_keepGoing(start string) bool {
+    
+    keepGoing := false
+    if start == "Y" || start == "y" {
+         keepGoing = true
+     }
+     return keepGoing
+}
 //This function rerolls a specific index of an array passed to it.
 //Used to reroll diceStorage array that holds the rolled values
 func printDiceArray(input [5]int){
@@ -84,7 +105,7 @@ func printDiceArray(input [5]int){
   for i < len(input){
     time.Sleep(400 * time.Millisecond)
     printDie(input[i])
-    fmt.Println("  Die #",i + 1)
+    fmt.Println("                         Die #",i + 1)
     i++
   }
       time.Sleep(200 * time.Millisecond)
@@ -116,7 +137,6 @@ func reRollPrompt(){
 
 func printTitle(){
     
-    time.Sleep(200 * time.Millisecond)
     fmt.Println(" _      _     .     __  __  _______  _______  .____  .____  ")
     time.Sleep(200 * time.Millisecond)
     fmt.Println("  `.   /     /|     |   |  '   |    '      /  /      /      ")
@@ -134,50 +154,50 @@ func printDie(i int){
   
    switch i {
     case 1:
-  fmt.Println(" _________")
-  fmt.Println("|         |")
-  fmt.Println("|         |")
-  fmt.Println("|    1    |")
-  fmt.Println("|         |")
-  fmt.Println("|_________|")
-    case 2: 
-  fmt.Println(" _________")
-  fmt.Println("|         |")
-  fmt.Println("|  2      |")
-  fmt.Println("|         |")
-  fmt.Println("|      2  |")
-  fmt.Println("|_________|")
-    case 3:
-  fmt.Println(" _________")
-  fmt.Println("|         |")
-  fmt.Println("|  3      |")
-  fmt.Println("|    3    |")
-  fmt.Println("|      3  |")
-  fmt.Println("|_________|")
-   
-    case 4:  
-  fmt.Println(" _________")
-  fmt.Println("|         |")
-  fmt.Println("|  4   4  |")
-  fmt.Println("|         |")
-  fmt.Println("|  4   4  |")
-  fmt.Println("|_________|")
-  
-    case 5:
-  fmt.Println(" _________")
-  fmt.Println("|         |")
-  fmt.Println("|  5   5  |")
-  fmt.Println("|    5    |")
-  fmt.Println("|  5   5  |")
-  fmt.Println("|_________|")
-    case 6:
-  fmt.Println(" _________")
-  fmt.Println("|         |")
-  fmt.Println("|  6   6  |")
-  fmt.Println("|  6   6  |")
-  fmt.Println("|  6   6  |")
-  fmt.Println("|_________|")
-    }
+  fmt.Println("                        _________")
+  fmt.Println("                       |         |")
+  fmt.Println("                       |         |")
+  fmt.Println("                       |    1    |")
+  fmt.Println("                       |         |")
+  fmt.Println("                       |_________|")
+    case 2:               
+  fmt.Println("                        _________")
+  fmt.Println("                       |         |")
+  fmt.Println("                       |  2      |")
+  fmt.Println("                       |         |")
+  fmt.Println("                       |      2  |")
+  fmt.Println("                       |_________|")
+    case 3:                       
+  fmt.Println("                        _________")
+  fmt.Println("                       |         |")
+  fmt.Println("                       |  3      |")
+  fmt.Println("                       |    3    |")
+  fmt.Println("                       |      3  |")
+  fmt.Println("                       |_________|")
+                          
+    case 4:                   
+  fmt.Println("                        _________")
+  fmt.Println("                       |         |")
+  fmt.Println("                       |  4   4  |")
+  fmt.Println("                       |         |")
+  fmt.Println("                       |  4   4  |")
+  fmt.Println("                       |_________|")
+                      
+    case 5:                       
+  fmt.Println("                        _________")
+  fmt.Println("                       |         |")
+  fmt.Println("                       |  5   5  |")
+  fmt.Println("                       |    5    |")
+  fmt.Println("                       |  5   5  |")
+  fmt.Println("                       |_________|")
+    case 6:                       
+  fmt.Println("                        _________")
+  fmt.Println("                       |         |")
+  fmt.Println("                       |  6   6  |")
+  fmt.Println("                       |  6   6  |")
+  fmt.Println("                       |  6   6  |")
+  fmt.Println("                       |_________|")
+    }  
   
 }
 
