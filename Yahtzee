@@ -6,14 +6,17 @@ import "strconv"
 
 func main() {
 
+//variable setup
  var numRolls, dice, tempRoll int
  var diceStorage[5] int
  var inputStorage[] string
 
+//variable initilization
  tempRoll = 0
  numRolls = 0
  dice = 5
  
+ //initial roll of 5 dice, adds them to the array of dice rolls, and then prints the ascii die
  for numRolls < dice {
    
     tempRoll = (rand.Intn(600)/100)+1
@@ -24,21 +27,22 @@ func main() {
     numRolls++
   }
   
+  //asking the user for which die they want to reroll
   reRollPrompt(diceStorage)
   var rerolls string
   fmt.Scanln(&rerolls)
+  //this stores an array of the users input, and then converts it to int values
   inputStorage = strings.Split(rerolls, "")
-  
-  rerollNum := 0
-  for rerollNum < len(inputStorage){
+  i := 0
+  for i < len(inputStorage){
     
-    i, err := strconv.Atoi(inputStorage[rerollNum])
+    i, err := strconv.Atoi(inputStorage[i])
     
     if err != nil {fmt.Println(err)}
     
     diceStorage[i - 1] = (rand.Intn(600)/100)+1
     
-    rerollNum++
+    i++
   }
   reRoll(diceStorage)
   fmt.Println("Storage: ", diceStorage)
@@ -46,6 +50,8 @@ func main() {
 
 }
 
+//This function rerolls a specific index of an array passed to it.
+//Used to reroll diceStorage array that holds the rolled values
 func reRoll(input [5]int){
   
   i := 0
@@ -56,6 +62,8 @@ func reRoll(input [5]int){
   }
 }
 
+//This function prints the Storage array(each dice roll in an array) and then asks for rerolls, 
+//put it here to get it out of main
 func reRollPrompt(diceStorage [5]int){
   
   fmt.Println("Storage: ", diceStorage)
@@ -65,6 +73,8 @@ func reRollPrompt(diceStorage [5]int){
   
 }
 
+
+//This function prints the ascii die for the number(dice roll) that is passed to it
 func roll(i int){
   
    switch i {
