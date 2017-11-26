@@ -10,7 +10,7 @@ func main() {
 //variable setup
  var roll int
  var diceStorage[5] int
- rand.Seed(time.Now().UnixNano())
+ rand.Seed(time.Now().UnixNano()) //rand seeded to system time
 
 //variable initilization
  roll = 0
@@ -23,12 +23,10 @@ func main() {
  for i < 5 {
     roll = (rand.Intn(600)/100) + 1
     diceStorage[i] = roll
-    
-    printDie(roll)
-    fmt.Println(" Die #",i + 1)
     i++
   }
-    fmt.Println("Storage Array: ", diceStorage)
+    printDiceArray(diceStorage)
+    getScore(diceStorage)
   //===============================================================
   
   
@@ -64,8 +62,7 @@ func main() {
   // Prints out new array containing kept and rerolled dice
   //===============================================================
   printDiceArray(diceStorage)
-  fmt.Println("Storage Array: ", diceStorage)
-  fmt.Println()
+  getScore(diceStorage)
   //===============================================================
 
 }
@@ -76,10 +73,23 @@ func printDiceArray(input [5]int){
   
   i := 0
   for i < len(input){
-    fmt.Println("Die #", i + 1, ": ")
     printDie(input[i])
+    fmt.Println("  Die #",i + 1)
     i++
   }
+  fmt.Println("\nStorage Array: ", input)
+}
+
+func getScore(diceStorage [5]int) (score int){
+  
+  i := 0
+  for i < len(diceStorage){
+    score = score + diceStorage[i]
+    i++
+  }
+  
+  fmt.Println("Score (Sum of Dice): ",score)
+  return score
 }
 
 //This function prints the Storage array(each dice roll in an array) and then asks for rerolls, 
@@ -97,49 +107,51 @@ func printDie(i int){
   
    switch i {
     case 1:
-  fmt.Println(" _______")
-  fmt.Println("|       |")
-  fmt.Println("|       |")
-  fmt.Println("|   1   |")
-  fmt.Println("|       |")
-  fmt.Println("|_______|")
-    case 2:
-  fmt.Println(" _______")
-  fmt.Println("|       |")
-  fmt.Println("| 2     |")
-  fmt.Println("|       |")
-  fmt.Println("|     2 |")
-  fmt.Println("|_______|")
+  fmt.Println(" _________")
+  fmt.Println("|         |")
+  fmt.Println("|         |")
+  fmt.Println("|    1    |")
+  fmt.Println("|         |")
+  fmt.Println("|_________|")
+    case 2: 
+  fmt.Println(" _________")
+  fmt.Println("|         |")
+  fmt.Println("|  2      |")
+  fmt.Println("|         |")
+  fmt.Println("|      2  |")
+  fmt.Println("|_________|")
     case 3:
-  fmt.Println(" _______")
-  fmt.Println("|       |")
-  fmt.Println("| 3     |")
-  fmt.Println("|   3   |")
-  fmt.Println("|     3 |")
-  fmt.Println("|_______|")
-  
+  fmt.Println(" _________")
+  fmt.Println("|         |")
+  fmt.Println("|  3      |")
+  fmt.Println("|    3    |")
+  fmt.Println("|      3  |")
+  fmt.Println("|_________|")
+   
     case 4:  
-  fmt.Println(" _______ ")
-  fmt.Println("|       |")
-  fmt.Println("| 4   4 |")
-  fmt.Println("|       |")
-  fmt.Println("| 4   4 |")
-  fmt.Println("|_______|")
-
+  fmt.Println(" _________")
+  fmt.Println("|         |")
+  fmt.Println("|  4   4  |")
+  fmt.Println("|         |")
+  fmt.Println("|  4   4  |")
+  fmt.Println("|_________|")
+  
     case 5:
-  fmt.Println(" _______")
-  fmt.Println("|       |")
-  fmt.Println("| 5   5 |")
-  fmt.Println("|   5   |")
-  fmt.Println("| 5   5 |")
-  fmt.Println("|_______|")
+  fmt.Println(" _________")
+  fmt.Println("|         |")
+  fmt.Println("|  5   5  |")
+  fmt.Println("|    5    |")
+  fmt.Println("|  5   5  |")
+  fmt.Println("|_________|")
     case 6:
-  fmt.Println(" _______")
-  fmt.Println("|       |")
-  fmt.Println("| 6   6 |")
-  fmt.Println("| 6   6 |")
-  fmt.Println("| 6   6 |")
-  fmt.Println("|_______|")
+  fmt.Println(" _________")
+  fmt.Println("|         |")
+  fmt.Println("|  6   6  |")
+  fmt.Println("|  6   6  |")
+  fmt.Println("|  6   6  |")
+  fmt.Println("|_________|")
     }
   
 }
+
+
