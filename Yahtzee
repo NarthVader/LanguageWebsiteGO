@@ -8,7 +8,7 @@ import "time"
 func main() {
 
 //variable setup
- var roll int
+ var roll, scoreDiff int
  var diceStorage[5] int
  rand.Seed(time.Now().UnixNano()) //rand seeded to system time
 
@@ -26,7 +26,7 @@ func main() {
     i++
   }
     printDiceArray(diceStorage)
-    getScore(diceStorage)
+    scoreDiff = getScore(diceStorage)
   //===============================================================
   
   
@@ -62,7 +62,17 @@ func main() {
   // Prints out new array containing kept and rerolled dice
   //===============================================================
   printDiceArray(diceStorage)
-  getScore(diceStorage)
+  scoreDiff = getScore(diceStorage) - scoreDiff
+  
+  if scoreDiff % 2 == 0 {
+    fmt.Println("Score Gain after Re-Rolls: +",scoreDiff)
+  } else if scoreDiff == 1 {
+    fmt.Println("Score Gain after Re-Rolls: +",scoreDiff)
+  } else {
+    fmt.Println("Score Gain after Re-Rolls:",scoreDiff)
+  }
+  
+  
   //===============================================================
 
 }
