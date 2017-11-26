@@ -3,79 +3,97 @@ import "fmt"
 import "math/rand"
 import "strings"
 import "strconv"
+import "time"
 
 func main() {
 
 //variable setup
- var numRolls, dice, tempRoll int
+ var roll int
  var diceStorage[5] int
- var inputStorage[] string
+ rand.Seed(time.Now().UnixNano())
 
 //variable initilization
- tempRoll = 0
- numRolls = 0
- dice = 5
- 
- //initial roll of 5 dice, adds them to the array of dice rolls, and then prints the ascii die
- for numRolls < dice {
-   
-    tempRoll = (rand.Intn(600)/100)+1
-    diceStorage[numRolls] = tempRoll
-    fmt.Println("Die #", numRolls + 1, ": ")
-    roll(tempRoll)
-    fmt.Println()
-    numRolls++
-  }
-  
-  //asking the user for which die they want to reroll
-  reRollPrompt(diceStorage)
-  var rerolls string
-  fmt.Scanln(&rerolls)
-  //this stores an array of the users input, and then converts it to int values
-  inputStorage = strings.Split(rerolls, "")
-  i := 0
-  for i < len(inputStorage){
+ roll = 0
+
+
+ // Initial roll of 5 dice, adds them to the array of dice rolls,
+ // and then prints the ascii die.
+ //===============================================================
+ i := 0
+ for i < 5 {
+    roll = (rand.Intn(600)/100) + 1
+    diceStorage[i] = roll
     
-    i, err := strconv.Atoi(inputStorage[i])
-    
-    if err != nil {fmt.Println(err)}
-    
-    diceStorage[i - 1] = (rand.Intn(600)/100)+1
-    
+    printDie(roll)
+    fmt.Println(" Die #",i + 1)
     i++
   }
-  reRoll(diceStorage)
-  fmt.Println("Storage: ", diceStorage)
+    fmt.Println("Storage Array: ", diceStorage)
+  //===============================================================
+  
+  
+  // Asking the user for which die they want to reroll, and storing it as a string
+  //===============================================================
+  reRollPrompt()
+  var rerolls string
+  fmt.Scanln(&rerolls)
+  //===============================================================
+  
+  //This stores an array of the users input, and then converts it to int values, 
+  //then generates a new random number for that index in the diceStorage array
+  //===============================================================
+  
+  var inputStorage[] string
+  inputStorage = strings.Split(rerolls, "")
+  fmt.Println("\nUser Selected Dice to Re-Roll: ",inputStorage,"\n")
+  
+  j := 0
+  for j < len(inputStorage){
+    
+    num, err := strconv.Atoi(inputStorage[j])
+    if err != nil {fmt.Println(err)}
+
+    diceStorage[num - 1] = (rand.Intn(600)/100)+1
+    
+    j++
+  }
+  //fmt.Println(diceStorage)
+  //===============================================================
+  
+  
+  // Prints out new array containing kept and rerolled dice
+  //===============================================================
+  printDiceArray(diceStorage)
+  fmt.Println("Storage Array: ", diceStorage)
   fmt.Println()
+  //===============================================================
 
 }
 
 //This function rerolls a specific index of an array passed to it.
 //Used to reroll diceStorage array that holds the rolled values
-func reRoll(input [5]int){
+func printDiceArray(input [5]int){
   
   i := 0
   for i < len(input){
     fmt.Println("Die #", i + 1, ": ")
-    roll(input[i])
+    printDie(input[i])
     i++
   }
 }
 
 //This function prints the Storage array(each dice roll in an array) and then asks for rerolls, 
 //put it here to get it out of main
-func reRollPrompt(diceStorage [5]int){
+func reRollPrompt(){
   
-  fmt.Println("Storage: ", diceStorage)
   fmt.Println()
   fmt.Println("Enter Numbers of the Dice to re-roll,")
   fmt.Print("Example: 245 would reroll Die 2, 4, and 5: ")
   
 }
 
-
 //This function prints the ascii die for the number(dice roll) that is passed to it
-func roll(i int){
+func printDie(i int){
   
    switch i {
     case 1:
