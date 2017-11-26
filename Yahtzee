@@ -15,7 +15,8 @@ func main() {
 //variable initilization
  roll = 0
 
-
+ printTitle()
+ 
  // Initial roll of 5 dice, adds them to the array of dice rolls,
  // and then prints the ascii die.
  //===============================================================
@@ -64,12 +65,10 @@ func main() {
   printDiceArray(diceStorage)
   scoreDiff = getScore(diceStorage) - scoreDiff
   
-  if scoreDiff % 2 == 0 {
-    fmt.Println("Score Gain after Re-Rolls: +",scoreDiff)
-  } else if scoreDiff == 1 {
+  if scoreDiff >= 0 {
     fmt.Println("Score Gain after Re-Rolls: +",scoreDiff)
   } else {
-    fmt.Println("Score Gain after Re-Rolls:",scoreDiff)
+    fmt.Println("Score Gain after Re-Rolls: ",scoreDiff)
   }
   
   
@@ -83,10 +82,12 @@ func printDiceArray(input [5]int){
   
   i := 0
   for i < len(input){
+    time.Sleep(400 * time.Millisecond)
     printDie(input[i])
     fmt.Println("  Die #",i + 1)
     i++
   }
+      time.Sleep(200 * time.Millisecond)
   fmt.Println("\nStorage Array: ", input)
 }
 
@@ -110,6 +111,22 @@ func reRollPrompt(){
   fmt.Println("Enter Numbers of the Dice to re-roll,")
   fmt.Print("Example: 245 would reroll Die 2, 4, and 5: ")
   
+}
+
+
+func printTitle(){
+    
+    time.Sleep(200 * time.Millisecond)
+    fmt.Println(" _      _     .     __  __  _______  _______  .____  .____  ")
+    time.Sleep(200 * time.Millisecond)
+    fmt.Println("  `.   /     /|     |   |  '   |    '      /  /      /      ")
+    time.Sleep(200 * time.Millisecond)
+    fmt.Println("    `./     /  \\    |___|      |       .--'   |__.   |__.   ")
+    time.Sleep(200 * time.Millisecond)
+    fmt.Println("    ,'     /---'\\   |   |      |      /       |      |      ")
+    time.Sleep(200 * time.Millisecond)
+    fmt.Println(" _-'      /      \\  /   /      /    ,'______/ \\----/ \\----/ ")
+
 }
 
 //This function prints the ascii die for the number(dice roll) that is passed to it
