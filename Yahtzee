@@ -1,32 +1,68 @@
 package main
 import "fmt"
 import "math/rand"
+import "strings"
+import "strconv"
 
 func main() {
 
- var numRolls int
- var dice int
- var score int
- var tempRoll int
- tempRoll = 0
- numRolls = 1
- dice = 5
- score = 0
- 
- for numRolls <= dice {
-   
-   fmt.Println("Die #", numRolls, ": ")
-   tempRoll = rand.Intn(6)+1
-   score += tempRoll
-   roll(tempRoll)
-   fmt.Println()
-   numRolls++
-}
-  fmt.Print("Dice total: ", score, "\n")
-  fmt.Print("Enter Numbers of the Dice to re-roll:")
-  var rerolls int
-  fmt.Scanln(&rerolls)
+ var numRolls, dice, tempRoll int
+ var diceStorage[5] int
+ var inputStorage[] string
 
+ tempRoll = 0
+ numRolls = 0
+ dice = 5
+ 
+ for numRolls < dice {
+   
+    tempRoll = (rand.Intn(600)/100)+1
+    diceStorage[numRolls] = tempRoll
+    fmt.Println("Die #", numRolls + 1, ": ")
+    roll(tempRoll)
+    fmt.Println()
+    numRolls++
+  }
+  
+  reRollPrompt(diceStorage)
+  var rerolls string
+  fmt.Scanln(&rerolls)
+  inputStorage = strings.Split(rerolls, "")
+  
+  rerollNum := 0
+  for rerollNum < len(inputStorage){
+    
+    i, err := strconv.Atoi(inputStorage[rerollNum])
+    
+    if err != nil {fmt.Println(err)}
+    
+    diceStorage[i - 1] = (rand.Intn(600)/100)+1
+    
+    rerollNum++
+  }
+  reRoll(diceStorage)
+  fmt.Println("Storage: ", diceStorage)
+  fmt.Println()
+
+}
+
+func reRoll(input [5]int){
+  
+  i := 0
+  for i < len(input){
+    fmt.Println("Die #", i + 1, ": ")
+    roll(input[i])
+    i++
+  }
+}
+
+func reRollPrompt(diceStorage [5]int){
+  
+  fmt.Println("Storage: ", diceStorage)
+  fmt.Println()
+  fmt.Println("Enter Numbers of the Dice to re-roll,")
+  fmt.Print("Example: 245 would reroll Die 2, 4, and 5: ")
+  
 }
 
 func roll(i int){
@@ -36,45 +72,45 @@ func roll(i int){
   fmt.Println(" _______")
   fmt.Println("|       |")
   fmt.Println("|       |")
-  fmt.Println("|   O   |")
+  fmt.Println("|   1   |")
   fmt.Println("|       |")
   fmt.Println("|_______|")
     case 2:
   fmt.Println(" _______")
   fmt.Println("|       |")
-  fmt.Println("| O     |")
+  fmt.Println("| 2     |")
   fmt.Println("|       |")
-  fmt.Println("|     O |")
+  fmt.Println("|     2 |")
   fmt.Println("|_______|")
     case 3:
   fmt.Println(" _______")
   fmt.Println("|       |")
-  fmt.Println("| O     |")
-  fmt.Println("|   O   |")
-  fmt.Println("|     O |")
+  fmt.Println("| 3     |")
+  fmt.Println("|   3   |")
+  fmt.Println("|     3 |")
   fmt.Println("|_______|")
   
     case 4:  
   fmt.Println(" _______ ")
   fmt.Println("|       |")
-  fmt.Println("| O   O |")
+  fmt.Println("| 4   4 |")
   fmt.Println("|       |")
-  fmt.Println("| O   O |")
+  fmt.Println("| 4   4 |")
   fmt.Println("|_______|")
 
     case 5:
   fmt.Println(" _______")
   fmt.Println("|       |")
-  fmt.Println("| O   O |")
-  fmt.Println("|   O   |")
-  fmt.Println("| O   O |")
+  fmt.Println("| 5   5 |")
+  fmt.Println("|   5   |")
+  fmt.Println("| 5   5 |")
   fmt.Println("|_______|")
     case 6:
   fmt.Println(" _______")
   fmt.Println("|       |")
-  fmt.Println("| O   O |")
-  fmt.Println("| O   O |")
-  fmt.Println("| O   O |")
+  fmt.Println("| 6   6 |")
+  fmt.Println("| 6   6 |")
+  fmt.Println("| 6   6 |")
   fmt.Println("|_______|")
     }
   
