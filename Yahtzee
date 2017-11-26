@@ -18,8 +18,9 @@ func main() {
  roll = 0
 
  printTitle()
+ printScoreboard()
  
- fmt.Print("\nWould you like to play a game? (Y or N): ")
+ fmt.Print("\n        Would you like to play a game? (Y or N): ")
  var start string
  fmt.Scanln(&start)
  keepGoing = set_keepGoing(start)
@@ -94,9 +95,12 @@ func set_keepGoing(start string) bool {
     keepGoing := false
     if start == "Y" || start == "y" {
          keepGoing = true
+     } else if start == "EGG"{
+         easterEgg()
      }
      return keepGoing
 }
+
 //This function rerolls a specific index of an array passed to it.
 //Used to reroll diceStorage array that holds the rolled values
 func printDiceArray(input [5]int){
@@ -146,6 +150,7 @@ func printTitle(){
     fmt.Println("    ,'     /---'\\   |   |      |      /       |      |      ")
     time.Sleep(200 * time.Millisecond)
     fmt.Println(" _-'      /      \\  /   /      /    ,'______/ \\----/ \\----/ ")
+    time.Sleep(400 * time.Millisecond)
 
 }
 
@@ -197,8 +202,65 @@ func printDie(i int){
   fmt.Println("                       |  6   6  |")
   fmt.Println("                       |  6   6  |")
   fmt.Println("                       |_________|")
-    }  
-  
+    }
+    
 }
 
+func easterEgg(){
+    fmt.Println()
+  fmt.Println("            ,'``.._   ,'``.                               ")
+  fmt.Println("           :,--._:)\\,:,._,.:       All Glory to           ")
+  fmt.Println("           :`--,''   :`...';\\      the HYPNO TOAD!        ")
+  fmt.Println("            `,'       `---'  `.                           ")
+  fmt.Println("            /                 :     This project deserves extra credit...      ")
+  fmt.Println("           /                   \\                          ")
+  fmt.Println("         ,'                     :\\.___,-.                 ")
+  fmt.Println("        `...,---'``````-..._    |:       \\                ")
+  fmt.Println("          (                 )   ;:    )   \\  _,-.         ")
+  fmt.Println("           `.              (   //          `'    \\        ")
+  fmt.Println("            :               `.//  )      )     , ;        ")
+  fmt.Println("          ,-|`.            _,'/       )    ) ,' ,'        ")
+  fmt.Println("         (  :`.`-..____..=:.-':     .     _,' ,'          ")
+  fmt.Println("          `,'\\ ``--....-)='    `._,  \\  ,') _ '``._       ")
+  fmt.Println("       _.-/ _ `.       (_)      /     )' ; / \\ \\`-.'      ")
+  fmt.Println("      `--(   `-:`.     `' ___..'  _,-'   |/   `.)         ")
+  fmt.Println("           `-. `.`.``-----``--,  .`                        ")
+  fmt.Println("            |/`.\\`'        ,`,`);                         ")
+  fmt.Println("                `         (/  (/                          ")
+ fmt.Println()
+
+}
+
+func printScoreboard() {
+    
+        fmt.Println()
+        fmt.Println("                Roll           Used   Points   ")
+        fmt.Println("               _______________ _____ ________  ")
+        fmt.Println("              |               |     |        | ")
+        fmt.Println("              | Ones          |  X  |   00   | ")
+        fmt.Println("              |               |     |        | ")
+        fmt.Println("              | Twos          |  X  |   00   | ")
+        fmt.Println("              |               |     |        | ")
+        fmt.Println("              | Threes        |  X  |   00   | ")
+        fmt.Println("              |               |     |        | ")
+        fmt.Println("              | Fours         |  X  |   00   | ")
+        fmt.Println("              |               |     |        | ")
+        fmt.Println("              | Fives         |  X  |   00   | ")
+        fmt.Println("              |               |     |        | ")
+        fmt.Println("              | Sixes         |  X  |   00   | ")
+        fmt.Println("              |               |     |        | ")
+        fmt.Println("              |               |     |        | ")
+        fmt.Println("              | Chance        |  X  |   00   | ")
+        fmt.Println("              |               |     |        | ")
+        fmt.Println("              |               |     |        | ")
+        fmt.Println("              | Full House    |  X  |   00   | ")
+        fmt.Println("              |               |     |        | ")
+        fmt.Println("              | Sm. Straight  |  X  |   00   | ")
+        fmt.Println("              |               |     |        | ")
+        fmt.Println("              | Lrg. Straight |  X  |   00   | ")
+        fmt.Println("              |               |     |        | ")
+        fmt.Println("              | Yahtzee       |  X  |   00   | ")
+        fmt.Println("              |_______________|_____|________| ")
+}       
+       
 
