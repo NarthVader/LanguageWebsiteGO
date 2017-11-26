@@ -1,0 +1,81 @@
+package main
+import "fmt"
+import "math/rand"
+
+func main() {
+
+ var numRolls int
+ var dice int
+ var score int
+ var tempRoll int
+ tempRoll = 0
+ numRolls = 1
+ dice = 5
+ score = 0
+ 
+ for numRolls <= dice {
+   
+   fmt.Println("Die #", numRolls, ": ")
+   tempRoll = rand.Intn(6)+1
+   score += tempRoll
+   roll(tempRoll)
+   fmt.Println()
+   numRolls++
+}
+  fmt.Print("Dice total: ", score, "\n")
+  fmt.Print("Enter Numbers of the Dice to re-roll:")
+  var rerolls int
+  fmt.Scanln(&rerolls)
+
+}
+
+func roll(i int){
+  
+   switch i {
+    case 1:
+  fmt.Println(" _______")
+  fmt.Println("|       |")
+  fmt.Println("|       |")
+  fmt.Println("|   O   |")
+  fmt.Println("|       |")
+  fmt.Println("|_______|")
+    case 2:
+  fmt.Println(" _______")
+  fmt.Println("|       |")
+  fmt.Println("| O     |")
+  fmt.Println("|       |")
+  fmt.Println("|     O |")
+  fmt.Println("|_______|")
+    case 3:
+  fmt.Println(" _______")
+  fmt.Println("|       |")
+  fmt.Println("| O     |")
+  fmt.Println("|   O   |")
+  fmt.Println("|     O |")
+  fmt.Println("|_______|")
+  
+    case 4:  
+  fmt.Println(" _______ ")
+  fmt.Println("|       |")
+  fmt.Println("| O   O |")
+  fmt.Println("|       |")
+  fmt.Println("| O   O |")
+  fmt.Println("|_______|")
+
+    case 5:
+  fmt.Println(" _______")
+  fmt.Println("|       |")
+  fmt.Println("| O   O |")
+  fmt.Println("|   O   |")
+  fmt.Println("| O   O |")
+  fmt.Println("|_______|")
+    case 6:
+  fmt.Println(" _______")
+  fmt.Println("|       |")
+  fmt.Println("| O   O |")
+  fmt.Println("| O   O |")
+  fmt.Println("| O   O |")
+  fmt.Println("|_______|")
+    }
+  
+}
