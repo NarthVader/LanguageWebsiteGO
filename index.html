@@ -19,6 +19,7 @@
             <li id="navItem"><a id="navLink" href="pg3.html">Simple Examples</a></li>
             <li id="navItem"><a id="navLink" href="pg4.html">Complex Examples</a></li>
             <li id="navItem"><a id="navLink" href="pg5.html">Language Comparison</a></li>
+            <li id="navItem"><a id="navLink" href="pg6.html">LW2</a></li>
         </ul>
     </nav>
     <p>  
@@ -26,11 +27,11 @@
     </p>  
     <p>
     Syntax and Type:
-    As previously mentioned, it looks a lot like C. Go is based off of "the best parts" of C++, Java, and Python. Improvements made to improve language readability and simplicity, as well as memory safety. Variable declaration and initialization done through type inference. This mostly means that Go is object oriented in the sense that it allows types and methods, plus the style feels like object oriented java with strict interface inheritance. The "object" in Go is just a struct (like C). Methods can be designed for primitive types such as int. It is an imperiative language, meaning that it uses statements to describe the state of the program, in essence describing how your program operates. Other imperative languages FORTRAN, ALGOL, Pascal, BASIC, Java, C, Python, Javascript, Ruby, etc. Go has loops, statements, selections, etc. There are many things that Go won't do, for a variety of reasons that Go designers (aka people much smarter than us), have decided on. These are: 
+    As previously mentioned, it looks a lot like C. Go is based off of "the best parts" of C++, Java, and Python. Improvements made to improve language readability and simplicity, as well as memory safety. Variable declaration and initialization done through type inference. Go is not object-oriented in the sense of having abstract data types that are referred to as objects. However, Go is object oriented in the sense that it allows types and methods, plus the style feels like object oriented java with strict inheritance through the struct. Therefore, the "object" in Go can be thought of by each custom struct (like C) that you design and use accordingly. It's a little different, but once you get used to it, it's pretty much the same. Methods can be designed for primitive types such as int. It is an imperiative language, meaning that it uses statements to describe the state of the program, in essence describing how your program operates. Other imperative languages FORTRAN, ALGOL, Pascal, BASIC, Java, C, Python, Javascript, Ruby, etc. Go has loops, statements, selections, etc. There are many things that Go won't do, for a variety of reasons that Go designers (aka people much smarter than us), have decided on. These are: 
 <br>
     <br>"No ternary testing operation
     <br>No generic types
-    <br>No exceptions
+    <br>No exceptions (no Object called Exception that you Throw and Catch (Java)) Use explicit error return values because Go supports multiple return values! Declare return value of the built in error type. Panic, extreme exception case kills execution.
     <br>No assertations
     <br>No implements for interface
     <br>No algebraic types
