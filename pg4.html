@@ -9,7 +9,7 @@
 <body>
     <header id="main">
         <h1 id="banner">Go, GoLang</h1>
-        <h2 id="banner">Description and History</h2>
+        <h2 id="banner">Complex Examples</h2>
     </header>
     <nav>
         <ul id="nav">
@@ -19,14 +19,19 @@
             <li id="navItem"><a id="navLink" href="pg3.html">Simple Examples</a></li>
             <li id="navItem"><a id="navLink" href="pg4.html">Complex Examples</a></li>
             <li id="navItem"><a id="navLink" href="pg5.html">Language Comparison</a></li>
+            <li id="navItem"><a id="navLink" href="pg6.html">LW2</a></li>
         </ul>
     </nav>
-    <p>  package main<br><br>
+	<br>
+	<a href="https://repl.it/@garettskaar/DeckOfCards">Deck of Cards-Complex Example</a><br>
+	
+	
+    <p>  package main<br>
 
 <br>//import multiple libraries/packages
-<br><br>import (
+<br>import (
 <br>  "fmt"
-<br>)<br>
+<br>)
 <br>
 <br>//takes an array(slice) of integers and prints all values
 <br>func printSlice(s []int) {
@@ -56,7 +61,7 @@
     <br>&#8195;//returns array of multiples
     <br>&#8195;return m
 <br>}
-<br><br>
+<br>
 <br>func sum(x[] int) int {    
     <br>&#8195;//static variable, static scope
     <br>&#8195;total := 0
@@ -65,7 +70,7 @@
     <br>&#8195;}
     <br>&#8195;return total
 <br>}
-
+<br>
 <br>func main() {
     <br>&#8195;//array of integers to find multiples on
     <br>&#8195;num := 30
@@ -91,7 +96,7 @@
 <br>&#8195;  }
 <br>&#8195;  return
 <br>}
-
+<br>
 <br>func main(){
 <br>&#8195;    readIn := bufio.NewReader(os.Stdin)
 <br>&#8195;    fmt.Print("Enter string to be reversed: ")
@@ -110,7 +115,7 @@ package main
 <br>
 <br>import "fmt"
 <br>import "math/rand"
-<br><br>
+<br>
 <br>func main() {
     <br>&#8195;fmt.Print("How many dice? (1-5):")
     <br>&#8195;var numDice int
@@ -131,7 +136,7 @@ package main
  <br> 
   <br>&#8195;var origDice int
 <br>  &#8195;origDice = dice
-  
+  <br>
   <br>&#8195;var score int
   <br>&#8195;score = 0
   <br>
@@ -141,7 +146,7 @@ package main
         <br>&#8195;&#8195;fmt.Print(": ")
         <br>
         <br>&#8195;&#8195;for dice > 0 {
-            <br>  
+              
               <br>&#8195;&#8195;&#8195;var tempRoll int
               <br>&#8195;&#8195;&#8195;tempRoll = rand.Intn(6)+1
               <br>&#8195;&#8195;&#8195;score += tempRoll
@@ -165,140 +170,10 @@ package main
   <br>&#8195;fmt.Print(float64(score)/float64(rolls))
   <br>&#8195;fmt.Print("\n")
   <br>
-<br>}
+}
 </p>
 
-<p>
-<br>package main
-<br>import "fmt"
-<br>import "math/rand"
-<br>import "time"
-<br><br><br>
-
-<br>/*
-<br>
-<br>import "bufio"
-<br>import "os"
-<br>import "strconv"
-<br>
-<br>Card Dealer (Soon to be black jack, I hope...)
-<br>
-<br>Author: Garett Skaar
-<br>
-<br>Go LW1 program CS-354
-<br>
-<br>*/
-<br>
-<br>//Main will build a deck of cards, shuffle the cards and ask for a number
-<br>//of cards to be dealt.
-<br>func main() {
-<br>
-    <br>&#8195;//Build a new deck, unshuffled...
-    <br>&#8195;deck := buildDeck()
-    <br>&#8195;//Shuffle deck...
-    <br>&#8195;shuffleDeck(deck)
-    <br>&#8195;//prompt user
-    <br>&#8195;fmt.Println("Deal how many cards?")
-    <br>&#8195;var userInput int
-    <br>&#8195;//scan standard input and check for errors
-    <br>&#8195;_, err := fmt.Scanf("%d", &userInput)
-    <br>&#8195;if err != nil {
-    <br>&#8195;&#8195;        fmt.Println(err)
-   <br> &#8195;}
-    <br>&#8195;//display the desired amount of cards
-    <br>&#8195;Deal(deck, userInput)
-   <br>
-    <br>&#8195;/*
-    <br>&#8195;needs implemented for black jack
-    <br>
-    <br>&#8195;if strings.Contains(userInput, "y"){
-     <br>&#8195;&#8195;   fmt.Println()
-     <br>&#8195;&#8195;   startGame(deck)
-    <br>&#8195;} else if strings.Contains(userInput, "n"){
-      <br>&#8195;&#8195;  fmt.Println("Maybe next time!")
-    <br>&#8195;} else{
-        <br>&#8195;&#8195;fmt.Println("Maybe next time!")
-    <br>&#8195;}
-    <br>&#8195;*/
-  
-<br>&#8195;}
-<br>
-<br>//Deals the specified number of cards by user
-<br>func Deal(d Deck, n int) {
-   <br>&#8195; for i := 0; i < n; i++ {
-       <br>&#8195;&#8195; fmt.Println(d[i].value,"of",d[i].suit)
-    <br>&#8195;}
-<br>}
-<br>
-<br>//needs work
-<br>func startGame(deck Deck) {
-<br>
-<br>&#8195;    dealer := []Card{}
-<br>&#8195;    player := []Card{}
-<br>&#8195;    //var dealerVal int = 0
-<br>&#8195;    //var playerVal int = 0
-<br>    
-<br>&#8195;    //bust bool := false
-<br>&#8195;    fmt.Println("Dealing cards...")
-<br>&#8195;    for i :=0; i < len(deck) - 1;i++ {
-<br>&#8195;&#8195;        dealer = append(dealer, deck[i])
-<br>&#8195;&#8195;        player = append(player, deck[i+1])
-<br>&#8195;    }
-<br>}
-<br>
-<br>//struct type holds suit type and value (Face, Ace, or Number)
-<br>type Card struct {
-<br>&#8195;    value string
-<br>&#8195;    suit string
-<br>}
-<br>
-<br>//Array of Card structs
-<br>type Deck []Card
-<br>
-<br>
-<br>
-<br>//Builds and returns a new Card array
-<br>func buildDeck() (deck Deck) {
-<br>
-<br> &#8195;   //all valid values of a card
-<br> &#8195;   values := []string{"Two", "Three", "Four", "Five", "Six", "Seven",
-<br> &#8195;           "Eight", "Nine", "Ten", "Jack", "Queen", "King", "Ace"}
-<br>            
-<br> &#8195;   //all valid suits   
-<br> &#8195;   suits := []string{"Hearts", "Diamonds", "Clubs", "Spades"}
-<br>    
-   &#8195; // Loop over each value and suit appending to the deck
-<br> &#8195;   for i := 0; i < len(values); i++ {
-    <br>  &#8195;&#8195;  for n := 0; n < len(suits); n++ {
-        <br>  &#8195;&#8195;&#8195;  card := Card{
-            <br> &#8195;&#8195;&#8195;   value: values[i],
-                <br>&#8195;&#8195;&#8195;suit: suits[n],
-            <br>&#8195;&#8195;&#8195;}
-            <br>&#8195;&#8195;deck = append(deck, card)
-        <br>&#8195;&#8195;}
-    <br>&#8195;}
-    <br>&#8195;return deck     
-     <br>   
-<br>}
-<br>//Returns a shuffled Deck of cards
-<br>func shuffleDeck(deck Deck) Deck {
-<br>
-    <br>&#8195;//new seed based on current time
-    <br>&#8195;rand.Seed(time.Now().UnixNano())
-   <br> 
-    <br>&#8195;//Loops through deck, creates random int within deck size and current index, and
-    <br>&#8195;//swaps card postions if the index and random int are different.
-   <br> 
-    <br>&#8195;for i := 1; i < len(deck); i++ {
-    <br>    
-    <br> &#8195;&#8195;   random := rand.Intn(i + 1)
-     <br> &#8195;&#8195;  //swap the cards
-        <br>&#8195;&#8195;if i != random {
-           <br> &#8195;&#8195;&#8195;deck[random], deck[i] = deck[i], deck[random]
-        <br>&#8195;&#8195;}
-    <br>&#8195;}
-    <br>return deck
-<br>}   
+   
 </body>
 
 </html>
